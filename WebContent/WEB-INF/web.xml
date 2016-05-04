@@ -22,6 +22,11 @@
 		<res-ref-name>EcmService</res-ref-name>
 		<res-type>com.sap.ecm.api.EcmService</res-type>
 	</resource-ref>
+	<!-- User Provider Configuration -->
+	<resource-ref>
+		<res-ref-name>user/Provider</res-ref-name>
+		<res-type>com.sap.security.um.user.UserProvider</res-type>
+	</resource-ref>
 	<!-- Security Configuration -->
 	<login-config>
 		<auth-method>FORM</auth-method>
