@@ -1,39 +1,46 @@
-package main.java.com.sap.ssm.persistence.model;
+package main.java.com.sap.ssm.web.model.request;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.validator.constraints.NotBlank;
 
-@Entity
-@Table(name = "T_USER")
-public class User implements Serializable {
+/**
+ * The UserMergeRequest is a request object which used to store user data before
+ * the data merged into a {@link}User object
+ * 
+ * @author David Lin
+ */
+public class UserMergeRequest implements Serializable {
 
 	/**
 	 * Generated serial version uid
 	 */
-	private static final long serialVersionUID = 6530581430913916534L;
+	private static final long serialVersionUID = 8727397513367735881L;
 
-	@Id
-	@Column(name = "ID", nullable = false)
+	@NotBlank
 	private String id;
 
-	@Column(name = "FIRST_NAME", nullable = false)
+	@NotBlank
 	private String firstName;
 
-	@Column(name = "LAST_NAME", nullable = false)
+	@NotBlank
 	private String lastName;
 
-	@Column(name = "TEAM", nullable = false)
+	@NotBlank
 	private String team;
 
-	@Column(name = "ROLE", nullable = false)
+	@NotBlank
 	private String role;
 
-	@Column(name = "EMAIL", nullable = false)
+	@NotBlank
 	private String email;
+
+	/**
+	 * Non-param constructor
+	 */
+	public UserMergeRequest() {
+
+	}
 
 	/**
 	 * @return the id
@@ -43,9 +50,8 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * Set User ID
-	 * 
 	 * @param id
+	 *            the id to set
 	 */
 	public void setId(String id) {
 		this.id = id;

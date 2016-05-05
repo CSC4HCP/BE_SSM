@@ -1,39 +1,58 @@
-package main.java.com.sap.ssm.persistence.model;
+/**
+ * 
+ */
+package main.java.com.sap.ssm.web.model.response;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import main.java.com.sap.ssm.persistence.model.User;
 
-@Entity
-@Table(name = "T_USER")
-public class User implements Serializable {
+/**
+ * The <b>{@link}UserDetailResponse</b> is a response object which includes user
+ * data used by {@link}RestController to return to client
+ * 
+ * @author David Lin
+ */
+public class UserDetailResponse implements Serializable {
 
 	/**
 	 * Generated serial version uid
 	 */
-	private static final long serialVersionUID = 6530581430913916534L;
+	private static final long serialVersionUID = 8336069967946759824L;
 
-	@Id
-	@Column(name = "ID", nullable = false)
 	private String id;
 
-	@Column(name = "FIRST_NAME", nullable = false)
 	private String firstName;
 
-	@Column(name = "LAST_NAME", nullable = false)
 	private String lastName;
 
-	@Column(name = "TEAM", nullable = false)
 	private String team;
 
-	@Column(name = "ROLE", nullable = false)
 	private String role;
 
-	@Column(name = "EMAIL", nullable = false)
 	private String email;
+
+	/**
+	 * Non-param constructor
+	 */
+	public UserDetailResponse() {
+
+	}
+
+	/**
+	 * Constructor
+	 * 
+	 * @param user
+	 *            the {@link}User object returned to client
+	 */
+	public UserDetailResponse(User user) {
+		this.setId(user.getId());
+		this.setEmail(user.getEmail());
+		this.setFirstName(user.getFirstName());
+		this.setLastName(user.getLastName());
+		this.setRole(user.getRole());
+		this.setTeam(user.getTeam());
+	}
 
 	/**
 	 * @return the id
@@ -43,9 +62,8 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * Set User ID
-	 * 
 	 * @param id
+	 *            the id to set
 	 */
 	public void setId(String id) {
 		this.id = id;
