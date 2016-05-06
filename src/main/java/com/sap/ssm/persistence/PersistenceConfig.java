@@ -1,4 +1,4 @@
-package main.java.com.sap.ssm.persistence;
+package com.sap.ssm.persistence;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -23,7 +23,7 @@ import org.springframework.orm.jpa.SharedEntityManagerCreator;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import main.java.com.sap.ssm.persistence.context.DataSourceContext;
+import com.sap.ssm.persistence.context.DataSourceContext;
 
 @Configuration
 @EnableJpaAuditing

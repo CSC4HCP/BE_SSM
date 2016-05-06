@@ -1,4 +1,4 @@
-package main.java.com.sap.ssm.persistence.model;
+package com.sap.ssm.persistence.model;
 
 import java.io.Serializable;
 import java.sql.Date;

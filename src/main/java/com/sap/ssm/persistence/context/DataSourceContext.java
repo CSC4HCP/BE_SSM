@@ -1,4 +1,4 @@
-package main.java.com.sap.ssm.persistence.context;
+package com.sap.ssm.persistence.context;
 
 import javax.sql.DataSource;
 

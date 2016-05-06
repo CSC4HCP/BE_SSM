@@ -1,4 +1,4 @@
-package main.java.com.sap.ssm.document;
+package com.sap.ssm.document;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;

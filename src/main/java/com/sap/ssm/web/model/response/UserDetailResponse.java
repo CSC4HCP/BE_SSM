@@ -1,11 +1,11 @@
 /**
  * 
  */
-package main.java.com.sap.ssm.web.model.response;
+package com.sap.ssm.web.model.response;
 
 import java.io.Serializable;
 
-import main.java.com.sap.ssm.persistence.model.User;
+import com.sap.ssm.persistence.model.User;
 
 /**
  * The <b>{@link}UserDetailResponse</b> is a response object which includes user

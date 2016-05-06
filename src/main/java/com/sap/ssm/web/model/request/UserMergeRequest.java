@@ -1,4 +1,4 @@
-package main.java.com.sap.ssm.web.model.request;
+package com.sap.ssm.web.model.request;
 
 import java.io.Serializable;
 

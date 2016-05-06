@@ -1,4 +1,4 @@
-package main.java.com.sap.ssm.common;
+package com.sap.ssm.common;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;

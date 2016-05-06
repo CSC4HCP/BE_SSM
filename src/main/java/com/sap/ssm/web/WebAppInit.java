@@ -1,8 +1,8 @@
-package main.java.com.sap.ssm.web;
+package com.sap.ssm.web;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import main.java.com.sap.ssm.SpringConfig;
+import com.sap.ssm.SpringConfig;
 
 public class WebAppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 

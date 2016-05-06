@@ -1,13 +1,13 @@
 /**
  * 
  */
-package main.java.com.sap.ssm.service;
+package com.sap.ssm.service;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import main.java.com.sap.ssm.persistence.model.User;
-import main.java.com.sap.ssm.persistence.repository.UserRepository;
-import main.java.com.sap.ssm.web.model.request.UserMergeRequest;
+import com.sap.ssm.persistence.model.User;
+import com.sap.ssm.persistence.repository.UserRepository;
+import com.sap.ssm.web.model.request.UserMergeRequest;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package main.java.com.sap.ssm;
+package com.sap.ssm;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

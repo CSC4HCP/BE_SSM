@@ -1,4 +1,4 @@
-package main.java.com.sap.ssm.web.controller;
+package com.sap.ssm.web.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,7 +37,7 @@ import com.sap.ecm.api.EcmService;
 import com.sap.ecm.api.RepositoryOptions;
 import com.sap.ecm.api.RepositoryOptions.Visibility;
 
-import main.java.com.sap.ssm.document.DocumentConfig;
+import com.sap.ssm.document.DocumentConfig;
 
 @RestController
 @RequestMapping("/document")

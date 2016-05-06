@@ -1,4 +1,4 @@
-package main.java.com.sap.ssm.web.controller;
+package com.sap.ssm.web.controller;
 
 import java.util.Collection;
 
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import main.java.com.sap.ssm.persistence.model.User;
-import main.java.com.sap.ssm.service.UserService;
-import main.java.com.sap.ssm.web.model.request.UserMergeRequest;
-import main.java.com.sap.ssm.web.model.response.UserDetailResponse;
+import com.sap.ssm.persistence.model.User;
+import com.sap.ssm.service.UserService;
+import com.sap.ssm.web.model.request.UserMergeRequest;
+import com.sap.ssm.web.model.response.UserDetailResponse;
 
 /**
  * The {@link}RestController for user entity.

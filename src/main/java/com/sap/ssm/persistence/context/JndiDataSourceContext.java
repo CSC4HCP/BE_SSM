@@ -1,4 +1,4 @@
-package main.java.com.sap.ssm.persistence.context;
+package com.sap.ssm.persistence.context;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import main.java.com.sap.ssm.persistence.context.DataSourceContext;
+import com.sap.ssm.persistence.context.DataSourceContext;
 
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
