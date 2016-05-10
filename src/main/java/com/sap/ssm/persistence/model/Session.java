@@ -3,7 +3,11 @@ package com.sap.ssm.persistence.model;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: Session
@@ -49,6 +53,9 @@ public class Session implements Serializable {
 
 	@Column(name = "SUMMARY")
 	private String summary;
+
+	@Column(name = "VISIBILITY")
+	private boolean visibility;
 
 	/**
 	 * @return the id
@@ -190,5 +197,13 @@ public class Session implements Serializable {
 	 */
 	public void setSummary(String summary) {
 		this.summary = summary;
+	}
+
+	public boolean isVisibility() {
+		return visibility;
+	}
+
+	public void setVisibility(boolean visibility) {
+		this.visibility = visibility;
 	}
 }

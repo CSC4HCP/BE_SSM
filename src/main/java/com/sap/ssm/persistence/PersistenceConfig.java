@@ -78,7 +78,7 @@ public class PersistenceConfig {
 	@Primary
 	public synchronized EntityManager entityManager() {
 		if (this.entityManager == null) {
-			this.entityManager = SharedEntityManagerCreator.createSharedEntityManager(this.entityManagerFactory);
+			this.entityManager = SharedEntityManagerCreator.createSharedEntityManager(this.entityManagerFactory());
 		}
 		return this.entityManager;
 	}
