@@ -13,7 +13,7 @@ import com.sap.ssm.persistence.context.DataSourceContext;
 
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
-public class JndiDataSourceContext implements DataSourceContext {
+public class HcpDataSourceContext implements DataSourceContext {
 
 	protected DataSource dataSource;
 
