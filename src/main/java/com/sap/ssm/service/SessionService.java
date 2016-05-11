@@ -1,5 +1,7 @@
 package com.sap.ssm.service;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sap.ssm.persistence.model.Session;
-import com.sap.ssm.persistence.repository.implementations.SessionRepositoryImpl;
+import com.sap.ssm.persistence.repository.SessionRepository;
 import com.sap.ssm.web.model.request.SessionMergeRequest;
 
 /**
@@ -22,7 +24,7 @@ import com.sap.ssm.web.model.request.SessionMergeRequest;
 public class SessionService {
 
 	@Autowired
-	private SessionRepositoryImpl sessionRepositoryImpl;
+	private SessionRepository sessionRepository;
 
 	/**
 	 * Create a session
@@ -34,7 +36,7 @@ public class SessionService {
 	public Session createOne(@NotNull SessionMergeRequest sessionMergeRequest) {
 		Session session = new Session();
 		mergeScalarProperties(sessionMergeRequest, session);
-		return sessionRepositoryImpl.saveAndFlush(session);
+		return sessionRepository.saveAndFlush(session);
 	}
 
 	/**
@@ -45,7 +47,11 @@ public class SessionService {
 	 * @return A {@link}Session object
 	 */
 	public Session findOneById(@NotNull Long id) {
-		return sessionRepositoryImpl.findOne(id);
+		return sessionRepository.findOne(id);
+	}
+
+	public List<Session> findAll() {
+		return sessionRepository.findAll();
 	}
 
 	/**
@@ -55,7 +61,7 @@ public class SessionService {
 	 *            {@link}Session's id
 	 */
 	public void deleteOneById(@NotNull Long id) {
-		sessionRepositoryImpl.delete(id);
+		sessionRepository.delete(id);
 	}
 
 	/**
@@ -65,8 +71,8 @@ public class SessionService {
 	 *            {@link}Session's owner
 	 * @return A {@link}Session object
 	 */
-	public Session findAllByOwner(@NotNull String owner) {
-		return sessionRepositoryImpl.findAllByOwner(owner);
+	public List<Session> findByOwner(@NotNull String owner) {
+		return (sessionRepository).findByOwner(owner);
 	}
 
 	/**
@@ -76,8 +82,8 @@ public class SessionService {
 	 *            {@link}Session's category
 	 * @return A {@link}Session object
 	 */
-	public Session findAllByCategory(@NotNull String category) {
-		return sessionRepositoryImpl.findAllByCategory(category);
+	public List<Session> findByCategory(@NotNull String category) {
+		return sessionRepository.findByCategory(category);
 	}
 
 	/**
@@ -87,8 +93,8 @@ public class SessionService {
 	 *            {@link}Session's status
 	 * @return A {@link}Session object
 	 */
-	public Session findAllByStatus(@NotNull String status) {
-		return sessionRepositoryImpl.findAllByStatus(status);
+	public List<Session> findByStatus(@NotNull String status) {
+		return sessionRepository.findByStatus(status);
 	}
 
 	/**
@@ -98,8 +104,8 @@ public class SessionService {
 	 *            {@link}Session's owner and category
 	 * @return A {@link}Session object
 	 */
-	public Session findAllByOwnerAndCategory(@NotNull String owner, @NotNull String category) {
-		return sessionRepositoryImpl.findAllByOwnerAndCategory(owner, category);
+	public List<Session> findByOwnerAndCategory(@NotNull String owner, @NotNull String category) {
+		return sessionRepository.findByOwnerAndCategory(owner, category);
 	}
 
 	/**
@@ -109,8 +115,8 @@ public class SessionService {
 	 *            {@link}Session's owner and status
 	 * @return A {@link}Session object
 	 */
-	public Session findAllByOwnerAndStatus(@NotNull String owner, @NotNull String status) {
-		return sessionRepositoryImpl.findAllByOwnerAndStatus(owner, status);
+	public List<Session> findByOwnerAndStatus(@NotNull String owner, @NotNull String status) {
+		return sessionRepository.findByOwnerAndStatus(owner, status);
 	}
 
 	/**
@@ -121,9 +127,9 @@ public class SessionService {
 	 * @return A {@link}Session object
 	 */
 	public Session updateOne(@NotNull Long id, @NotNull SessionMergeRequest sessionMergeRequest) {
-		Session session = sessionRepositoryImpl.findOne(id);
+		Session session = sessionRepository.findOne(id);
 		mergeScalarProperties(sessionMergeRequest, session);
-		return sessionRepositoryImpl.saveAndFlush(session);
+		return sessionRepository.saveAndFlush(session);
 	}
 
 	/**
