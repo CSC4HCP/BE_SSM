@@ -14,6 +14,7 @@ import com.sap.ssm.persistence.model.Session;
 @Repository
 @Transactional
 public interface SessionRepository extends JpaRepository<Session, Long> {
+
 	/**
 	 * Find one session by owner
 	 * 

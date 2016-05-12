@@ -17,7 +17,6 @@ import com.sap.ssm.web.model.request.SessionMergeRequest;
  * The {@link}SessionService includes operations about the {@link}Session object
  * 
  * @author Likai Deng
- *
  */
 @Service
 @Transactional
