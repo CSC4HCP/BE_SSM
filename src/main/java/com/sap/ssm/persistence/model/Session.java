@@ -1,7 +1,7 @@
 package com.sap.ssm.persistence.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,7 +44,7 @@ public class Session implements Serializable {
 	private String status;
 
 	@Column(name = "MEETING_TIME")
-	private Date meetingTime;
+	private Timestamp meetingTime;
 
 	@Column(name = "MEETING_ROOM")
 	private String meetingRoom;
@@ -153,7 +153,7 @@ public class Session implements Serializable {
 	/**
 	 * @return the meetingTime
 	 */
-	public Date getMeetingTime() {
+	public Timestamp getMeetingTime() {
 		return meetingTime;
 	}
 
@@ -161,7 +161,7 @@ public class Session implements Serializable {
 	 * @param meetingTime
 	 *            the meetingTime to set
 	 */
-	public void setMeetingTime(Date meetingTime) {
+	public void setMeetingTime(Timestamp meetingTime) {
 		this.meetingTime = meetingTime;
 	}
 

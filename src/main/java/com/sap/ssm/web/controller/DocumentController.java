@@ -37,8 +37,6 @@ import com.sap.ecm.api.EcmService;
 import com.sap.ecm.api.RepositoryOptions;
 import com.sap.ecm.api.RepositoryOptions.Visibility;
 
-import com.sap.ssm.document.DocumentConfig;
-
 /**
  * The RestController for Document Service
  * 
@@ -93,7 +91,8 @@ public class DocumentController {
 	 * @throws {@link}}IOException
 	 */
 	@RequestMapping(value = "/upload/{session}", method = RequestMethod.POST)
-	public Object[] uploadFile(HttpServletRequest request, @PathVariable("session") String session) throws IOException {
+	public Object[] uploadFiles(HttpServletRequest request, @PathVariable("session") String session)
+			throws IOException {
 		if (this.multipartResolver.isMultipart(request)) {
 			MultipartHttpServletRequest mRequest = this.multipartResolver.resolveMultipart(request);
 			Iterator<String> files = mRequest.getFileNames();
@@ -108,8 +107,7 @@ public class DocumentController {
 					Map<String, String> newFileProps = new HashMap<>();
 					newFileProps.put(PropertyIds.OBJECT_TYPE_ID, "cmis:document");
 					newFileProps.put(PropertyIds.NAME, UUID.randomUUID().toString());
-					newFileProps.put(DocumentConfig.ORIGINAL_NAME, mFile.getOriginalFilename());
-					newFileProps.put(DocumentConfig.SESSION, session);
+					newFileProps.put(PropertyIds.DESCRIPTION, session);
 					newFileProps.put(PropertyIds.CREATED_BY, request.getRemoteUser());
 					newFileProps.put(PropertyIds.CREATION_DATE, (new Date(System.currentTimeMillis())).toString());
 					ContentStream cStream;
@@ -151,7 +149,7 @@ public class DocumentController {
 		InputStream iStream = cStream.getStream();
 		response.setContentType(cStream.getMimeType());
 		response.setHeader("content-disposition",
-				"attachment;filename=" + document.getPropertyValue(DocumentConfig.ORIGINAL_NAME));
+				"attachment;filename=" + document.getPropertyValue(PropertyIds.CONTENT_STREAM_FILE_NAME));
 		IOUtils.copy(iStream, response.getOutputStream());
 	}
 }

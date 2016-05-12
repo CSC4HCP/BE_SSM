@@ -1,7 +1,7 @@
 package com.sap.ssm.web.model.request;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -35,7 +35,7 @@ public class SessionMergeRequest implements Serializable {
 	private String status;
 
 	@NotBlank
-	private Date meetingTime;
+	private Timestamp meetingTime;
 
 	private String meetingRoom;
 
@@ -144,7 +144,7 @@ public class SessionMergeRequest implements Serializable {
 	/**
 	 * @return the meetingTime
 	 */
-	public Date getMeetingTime() {
+	public Timestamp getMeetingTime() {
 		return meetingTime;
 	}
 
@@ -152,7 +152,7 @@ public class SessionMergeRequest implements Serializable {
 	 * @param meetingTime
 	 *            the meetingTime to set
 	 */
-	public void setMeetingTime(Date meetingTime) {
+	public void setMeetingTime(Timestamp meetingTime) {
 		this.meetingTime = meetingTime;
 	}
 

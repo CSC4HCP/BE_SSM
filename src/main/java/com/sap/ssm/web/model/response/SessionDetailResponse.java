@@ -1,6 +1,7 @@
 package com.sap.ssm.web.model.response;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import com.sap.ssm.persistence.model.Session;
 
@@ -18,7 +19,7 @@ public class SessionDetailResponse {
 
 	private String status;
 
-	private Date meetingTime;
+	private Timestamp meetingTime;
 
 	private String meetingRoom;
 
@@ -94,11 +95,12 @@ public class SessionDetailResponse {
 		this.status = status;
 	}
 
-	public Date getMeetingTime() {
-		return meetingTime;
+	public String getMeetingTime() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+		return dateFormat.format(meetingTime);
 	}
 
-	public void setMeetingTime(Date meetingTime) {
+	public void setMeetingTime(Timestamp meetingTime) {
 		this.meetingTime = meetingTime;
 	}
 
