@@ -46,7 +46,7 @@ public class UserDetailResponse implements Serializable {
 	 *            the {@link}User object returned to client
 	 */
 	public UserDetailResponse(User user) {
-		this.setId(user.getId());
+		this.setName(user.getName());
 		this.setEmail(user.getEmail());
 		this.setFirstName(user.getFirstName());
 		this.setLastName(user.getLastName());
@@ -55,17 +55,17 @@ public class UserDetailResponse implements Serializable {
 	}
 
 	/**
-	 * @return the id
+	 * @return the name
 	 */
-	public String getId() {
+	public String getName() {
 		return name;
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param name
+	 *            the name to set
 	 */
-	public void setId(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

@@ -83,7 +83,7 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.POST)
 	public UserDetailResponse createOne(@NotNull @RequestBody UserMergeRequest userMergeRequest) {
 		userMergeRequest.setRole("Everyone");
-		userMergeRequest.setRole("SAP SSM");
+		userMergeRequest.setTeam("SAP SSM");
 		return new UserDetailResponse(userService.createOne(userMergeRequest));
 	}
 

@@ -23,7 +23,7 @@ public class User implements Serializable {
 
 	@Id
 	@Column(name = "ID", nullable = false)
-	private String id;
+	private String name;
 
 	@Column(name = "FIRST_NAME", nullable = false)
 	private String firstName;
@@ -41,19 +41,19 @@ public class User implements Serializable {
 	private String email;
 
 	/**
-	 * @return the id
+	 * @return the name
 	 */
-	public String getId() {
-		return id;
+	public String getName() {
+		return name;
 	}
 
 	/**
 	 * Set User ID
 	 * 
-	 * @param id
+	 * @param name
 	 */
-	public void setId(String id) {
-		this.id = id;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**

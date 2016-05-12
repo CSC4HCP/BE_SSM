@@ -43,9 +43,9 @@ public class UserMergeRequest implements Serializable {
 	}
 
 	/**
-	 * @return the id
+	 * @return the name
 	 */
-	public String getId() {
+	public String getName() {
 		return name;
 	}
 
@@ -53,7 +53,7 @@ public class UserMergeRequest implements Serializable {
 	 * @param name
 	 *            the name to set
 	 */
-	public void setId(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
