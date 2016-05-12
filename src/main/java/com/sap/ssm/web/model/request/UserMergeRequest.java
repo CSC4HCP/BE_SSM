@@ -18,7 +18,7 @@ public class UserMergeRequest implements Serializable {
 	private static final long serialVersionUID = 8727397513367735881L;
 
 	@NotBlank
-	private String id;
+	private String name;
 
 	@NotBlank
 	private String firstName;
@@ -46,15 +46,15 @@ public class UserMergeRequest implements Serializable {
 	 * @return the id
 	 */
 	public String getId() {
-		return id;
+		return name;
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param name
+	 *            the name to set
 	 */
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String name) {
+		this.name = name;
 	}
 
 	/**

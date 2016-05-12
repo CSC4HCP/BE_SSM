@@ -20,7 +20,7 @@ public class UserDetailResponse implements Serializable {
 	 */
 	private static final long serialVersionUID = 8336069967946759824L;
 
-	private String id;
+	private String name;
 
 	private String firstName;
 
@@ -58,15 +58,15 @@ public class UserDetailResponse implements Serializable {
 	 * @return the id
 	 */
 	public String getId() {
-		return id;
+		return name;
 	}
 
 	/**
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String name) {
+		this.name = name;
 	}
 
 	/**
