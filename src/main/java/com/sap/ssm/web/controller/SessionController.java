@@ -1,6 +1,7 @@
 package com.sap.ssm.web.controller;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import javax.validation.constraints.NotNull;
 
@@ -22,7 +23,7 @@ import com.sap.ssm.web.model.response.SessionDetailResponse;
 /**
  * The {@link}RestController for session entity.
  * 
- * @author Likai Deng
+ * @author Likai Deng, David Lin
  *
  */
 @RestController
@@ -40,71 +41,137 @@ public class SessionController {
 	};
 
 	/**
-	 * The API to create a new Session
-	 * 
-	 * API URL - <b>"/create"<b>
-	 * 
+	 * The API to create a new Session<br>
+	 * <br>
+	 * API URL - <b>"/api/session"</b><br>
 	 * Method - <b>"POST"</b>
 	 * 
+	 * @param sessionMergeRequest
+	 *            the request body for session
 	 * @return a {@link}SessionDetailResponse object.
 	 */
-
-	@RequestMapping(method = RequestMethod.GET)
-	public Collection<SessionDetailResponse> findAll() {
-		return CollectionUtils.collect(sessionService.findAll(), DETAIL_RESPONSE_TRANSFORMER);
-	}
-
 	@RequestMapping(method = RequestMethod.POST)
 	public SessionDetailResponse createOne(@NotNull @RequestBody SessionMergeRequest sessionMergeRequest) {
 		return new SessionDetailResponse(sessionService.createOne(sessionMergeRequest));
 	}
 
+	/**
+	 * The API for delete a session<br>
+	 * <br>
+	 * API URL - <b>"/api/session/{id}"</b> <br>
+	 * Method - <b>"DELETE"</b>
+	 * 
+	 * @param id
+	 *            session id
+	 */
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
 	public void deleteOneById(@PathVariable("id") Long id) {
 		sessionService.deleteOneById(id);
 	}
 
+	/**
+	 * The API for update a session<br>
+	 * <br>
+	 * API URL - <b>"/api/session/{id}"</b><br>
+	 * Method - <b>"PUT"</b>
+	 * 
+	 * @param id
+	 *            session id
+	 * @param sessionMergeRequest
+	 *            request body for session
+	 * @return the response body for a session
+	 */
 	@RequestMapping(method = RequestMethod.PUT, value = "/{id}")
 	public SessionDetailResponse updateOne(@PathVariable("id") Long id,
 			@NotNull @RequestBody SessionMergeRequest sessionMergeRequest) {
 		return new SessionDetailResponse(sessionService.updateOne(id, sessionMergeRequest));
 	}
 
+	/**
+	 * The API for find a session by id<br>
+	 * <br>
+	 * API URL - <b>"/api/session/{id}"</b><br>
+	 * Method - <b>"GET"</b>
+	 * 
+	 * @param id
+	 *            session id
+	 * @return response body for a session
+	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
 	public SessionDetailResponse findOneById(@PathVariable("id") Long id) {
 		return new SessionDetailResponse(sessionService.findOneById(id));
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/owner/{owner}")
-	public Collection<SessionDetailResponse> findByOwner(@PathVariable("owner") String owner) {
-		return CollectionUtils.collect(sessionService.findByOwner(owner), DETAIL_RESPONSE_TRANSFORMER);
+	/**
+	 * The API for find sessions by several optional parameters<br>
+	 * <br>
+	 * API URL - <b>"/api/session"</b><br>
+	 * Method - <b>"GET"</b>
+	 * 
+	 * @param owner
+	 *            Optional session owner
+	 * @param status
+	 *            Optional session status
+	 * @param category
+	 *            Optional session category
+	 * @param visibility
+	 *            Optional session visibility
+	 * @return a collection of session response body
+	 */
+	@RequestMapping(method = RequestMethod.GET)
+	public Collection<SessionDetailResponse> findBySeveralConditions(@RequestParam("owner") Optional<String> owner,
+			@RequestParam("status") Optional<String> status, @RequestParam("category") Optional<String> category,
+			@RequestParam("visibility") Optional<Boolean> visibility) {
+		if (visibility.isPresent()) {
+			if (owner.isPresent()) {
+				if (category.isPresent()) {
+					return CollectionUtils.collect(sessionService.findByOwnerAndCategoryAndVisibility(owner.get(),
+							category.get(), visibility.get()), DETAIL_RESPONSE_TRANSFORMER);
+				} else if (status.isPresent()) {
+					return CollectionUtils.collect(sessionService.findByOwnerAndStatusAndVisibility(owner.get(),
+							status.get(), visibility.get()), DETAIL_RESPONSE_TRANSFORMER);
+				} else {
+					return CollectionUtils.collect(
+							sessionService.findByOwnerAndVisibility(owner.get(), visibility.get()),
+							DETAIL_RESPONSE_TRANSFORMER);
+				}
+			} else {
+				if (category.isPresent()) {
+					return CollectionUtils.collect(
+							sessionService.findByCategoryAndVisibility(category.get(), visibility.get()),
+							DETAIL_RESPONSE_TRANSFORMER);
+				} else if (status.isPresent()) {
+					return CollectionUtils.collect(
+							sessionService.findByStatusAndVisibility(status.get(), visibility.get()),
+							DETAIL_RESPONSE_TRANSFORMER);
+				} else {
+					return CollectionUtils.collect(sessionService.findByVisibility(visibility.get()),
+							DETAIL_RESPONSE_TRANSFORMER);
+				}
+			}
+		} else {
+			if (owner.isPresent()) {
+				if (category.isPresent()) {
+					return CollectionUtils.collect(sessionService.findByOwnerAndCategory(owner.get(), category.get()),
+							DETAIL_RESPONSE_TRANSFORMER);
+				} else if (status.isPresent()) {
+					return CollectionUtils.collect(sessionService.findByOwnerAndStatus(owner.get(), status.get()),
+							DETAIL_RESPONSE_TRANSFORMER);
+				} else {
+					return CollectionUtils.collect(sessionService.findByOwner(owner.get()),
+							DETAIL_RESPONSE_TRANSFORMER);
+				}
+			} else {
+				if (category.isPresent()) {
+					return CollectionUtils.collect(sessionService.findByCategory(category.get()),
+							DETAIL_RESPONSE_TRANSFORMER);
+				} else if (status.isPresent()) {
+					return CollectionUtils.collect(sessionService.findByStatus(status.get()),
+							DETAIL_RESPONSE_TRANSFORMER);
+				} else {
+					return CollectionUtils.collect(sessionService.findAll(), DETAIL_RESPONSE_TRANSFORMER);
+				}
+			}
+		}
 	}
-
-	@RequestMapping(method = RequestMethod.GET, value = "/category/{category}")
-	public Collection<SessionDetailResponse> findByCategory(@PathVariable("category") String category) {
-		// return sessionService.findByCategory(category);
-		return CollectionUtils.collect(sessionService.findByCategory(category), DETAIL_RESPONSE_TRANSFORMER);
-	}
-
-	@RequestMapping(method = RequestMethod.GET, value = "/status/{status}")
-	public Collection<SessionDetailResponse> findByStatus(@PathVariable("status") String status) {
-		// return sessionService.findByStatus(status);
-		return CollectionUtils.collect(sessionService.findByStatus(status), DETAIL_RESPONSE_TRANSFORMER);
-	}
-
-	@RequestMapping(method = RequestMethod.GET, value = "/byOwnerAndStatus")
-	public Collection<SessionDetailResponse> findByOwnerAndStatus(@RequestParam("owner") String owner,
-			@RequestParam("status") String status) {
-		// return sessionService.findByOwnerAndStatus(owner, status);
-		return CollectionUtils.collect(sessionService.findByOwnerAndStatus(owner, status), DETAIL_RESPONSE_TRANSFORMER);
-	}
-
-	@RequestMapping(method = RequestMethod.GET, value = "/byOwnerAndCategory")
-	public Collection<SessionDetailResponse> findByOwnerAndCategory(@RequestParam("owner") String owner,
-			@RequestParam("category") String category) {
-		// return sessionService.findByOwnerAndCategory(owner, category);
-		return CollectionUtils.collect(sessionService.findByOwnerAndCategory(owner, category),
-				DETAIL_RESPONSE_TRANSFORMER);
-	}
-
 }

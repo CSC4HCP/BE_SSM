@@ -59,11 +59,15 @@ public class UserController {
 	 * 
 	 * @param id
 	 *            the user id.
-	 * @return a {@link}UserDetailResponse object.
+	 * @return a {@link}UserDetailResponse object if not null.
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public UserDetailResponse findOneById(@PathVariable("id") String id) {
-		return new UserDetailResponse(userService.findOneById(id));
+		User user = userService.findOneById(id);
+		if (user == null) {
+			return null;
+		}
+		return new UserDetailResponse(user);
 	}
 
 	/**

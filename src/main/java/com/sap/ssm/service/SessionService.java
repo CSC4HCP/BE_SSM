@@ -50,8 +50,17 @@ public class SessionService {
 		return sessionRepository.findOne(id);
 	}
 
-	public List<Session> findAll() {
-		return sessionRepository.findAll();
+	/**
+	 * Update one session by id
+	 * 
+	 * @param id
+	 *            {@link}Session's owner and status
+	 * @return A {@link}Session object
+	 */
+	public Session updateOne(@NotNull Long id, @NotNull SessionMergeRequest sessionMergeRequest) {
+		Session session = sessionRepository.findOne(id);
+		mergeScalarProperties(sessionMergeRequest, session);
+		return sessionRepository.saveAndFlush(session);
 	}
 
 	/**
@@ -62,6 +71,15 @@ public class SessionService {
 	 */
 	public void deleteOneById(@NotNull Long id) {
 		sessionRepository.delete(id);
+	}
+
+	/**
+	 * Find all exist sessions
+	 * 
+	 * @return List the list of all sessions
+	 */
+	public List<Session> findAll() {
+		return sessionRepository.findAll();
 	}
 
 	/**
@@ -120,16 +138,85 @@ public class SessionService {
 	}
 
 	/**
-	 * Update one session by id
+	 * Find sessions by visibility
 	 * 
-	 * @param id
-	 *            {@link}Session's owner and status
-	 * @return A {@link}Session object
+	 * @param visibility
+	 *            sessions' visibility
+	 * @return List a list of sessions
 	 */
-	public Session updateOne(@NotNull Long id, @NotNull SessionMergeRequest sessionMergeRequest) {
-		Session session = sessionRepository.findOne(id);
-		mergeScalarProperties(sessionMergeRequest, session);
-		return sessionRepository.saveAndFlush(session);
+	public List<Session> findByVisibility(boolean visibility) {
+		return sessionRepository.findByVisibility(visibility);
+	}
+
+	/**
+	 * Find sessions by category and visibility
+	 * 
+	 * @param category
+	 *            sessions' category
+	 * @param visibility
+	 *            sessions' visibility
+	 * @return List a list of sessions
+	 */
+	public List<Session> findByCategoryAndVisibility(@NotNull String category, boolean visibility) {
+		return sessionRepository.findByCategoryAndVisibility(category, visibility);
+	}
+
+	/**
+	 * Find sessions by owner and visibility
+	 * 
+	 * @param owner
+	 *            sessions' owner
+	 * @param visibility
+	 *            sessions' visibility
+	 * @return List a list of sessions
+	 */
+	public List<Session> findByOwnerAndVisibility(@NotNull String owner, boolean visibility) {
+		return sessionRepository.findByOwnerAndVisibility(owner, visibility);
+	}
+
+	/**
+	 * Find sessions by status and visibility
+	 * 
+	 * @param status
+	 *            sessions' status
+	 * @param visibility
+	 *            sessions' visibility
+	 * @return List a list of sessions
+	 */
+	public List<Session> findByStatusAndVisibility(@NotNull String status, boolean visibility) {
+		return sessionRepository.findByStatusAndVisibility(status, visibility);
+	}
+
+	/**
+	 * Find sessions by owner, category and visibility
+	 * 
+	 * @param owner
+	 *            sessions' owner
+	 * @param category
+	 *            sessions' category
+	 * @param visibility
+	 *            sessions' visibility
+	 * @return List a list of sessions
+	 */
+	public List<Session> findByOwnerAndCategoryAndVisibility(@NotNull String owner, @NotNull String category,
+			boolean visibility) {
+		return sessionRepository.findByOwnerAndCategoryAndVisibility(owner, category, visibility);
+	}
+
+	/**
+	 * Find sessions by owner, status and visibility
+	 * 
+	 * @param owner
+	 *            sessions' owner
+	 * @param status
+	 *            sessions' status
+	 * @param visibility
+	 *            sessions' visibility
+	 * @return List a list of sessions
+	 */
+	public List<Session> findByOwnerAndStatusAndVisibility(@NotNull String owner, @NotNull String status,
+			boolean visibility) {
+		return sessionRepository.findByOwnerAndStatusAndVisibility(owner, status, visibility);
 	}
 
 	/**

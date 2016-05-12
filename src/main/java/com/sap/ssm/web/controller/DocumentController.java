@@ -39,6 +39,11 @@ import com.sap.ecm.api.RepositoryOptions.Visibility;
 
 import com.sap.ssm.document.DocumentConfig;
 
+/**
+ * The RestController for Document Service
+ * 
+ * @author I326996 David Lin
+ */
 @RestController
 @RequestMapping("/document")
 public class DocumentController {
@@ -74,6 +79,19 @@ public class DocumentController {
 		}
 	}
 
+	/**
+	 * API for upload files<br>
+	 * <br>
+	 * API URL - <b>"/api/document/upload/{sessionId}"</b><br>
+	 * Method - <b>"POST"</b>
+	 * 
+	 * @param request
+	 *            the HTTP Servlet Request
+	 * @param session
+	 *            the session id
+	 * @return the Array of document id or error message if no file uploaded
+	 * @throws {@link}}IOException
+	 */
 	@RequestMapping(value = "/upload/{session}", method = RequestMethod.POST)
 	public Object[] uploadFile(HttpServletRequest request, @PathVariable("session") String session) throws IOException {
 		if (this.multipartResolver.isMultipart(request)) {
@@ -111,6 +129,18 @@ public class DocumentController {
 		return new String[] { "No file uploaded" };
 	}
 
+	/**
+	 * API for download file<br>
+	 * <br>
+	 * API URL - <b>"/api/document/download/{fileId}"</b><br>
+	 * Method - <b>"GET"</b>
+	 * 
+	 * @param fileId
+	 *            file id
+	 * @param response
+	 *            the HTTP Servlet Response
+	 * @throws {@link}IOException
+	 */
 	@RequestMapping(value = "/download/{fileId}", method = RequestMethod.GET)
 	public void downloadFile(@PathVariable String fileId, HttpServletResponse response) throws IOException {
 		if (this.openCmisSession == null) {

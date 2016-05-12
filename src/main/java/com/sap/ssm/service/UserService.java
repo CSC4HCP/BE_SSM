@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 /**
  * The {@link}UserService includes operations about the {@link}User object
  * 
- * @author David Lin
+ * @author I326996 David Lin
  */
 @Service
 @Transactional

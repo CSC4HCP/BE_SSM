@@ -11,7 +11,8 @@ import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: Session
- *
+ * 
+ * @author I326996 David Lin
  */
 @Entity
 @Table(name = "T_SESSION")
@@ -62,6 +63,16 @@ public class Session implements Serializable {
 	 */
 	public Long getId() {
 		return id;
+	}
+
+	/**
+	 * Set Session Id
+	 * 
+	 * @param id
+	 *            session id
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	/**

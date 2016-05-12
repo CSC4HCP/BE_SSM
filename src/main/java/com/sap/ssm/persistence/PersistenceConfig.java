@@ -25,12 +25,20 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.sap.ssm.persistence.context.DataSourceContext;
 
+/**
+ * The configuration for Persistence Service
+ * 
+ * @author I326996 David Lin
+ */
 @Configuration
 @EnableJpaAuditing
 @EnableJpaRepositories
 @EnableTransactionManagement
 public class PersistenceConfig {
 
+	/**
+	 * The DataSource name
+	 */
 	public static final String PERSISTENCE_UNIT_NAME = "SSM";
 
 	@Autowired
@@ -44,6 +52,12 @@ public class PersistenceConfig {
 
 	protected JpaTransactionManager transactionManager;
 
+	/**
+	 * {@link}DataSource bean
+	 * 
+	 * @return The exist DataSource or a new instance of DataSource if it is not
+	 *         exist
+	 */
 	@Bean
 	@Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 	public synchronized DataSource initDataSource() {
@@ -60,6 +74,11 @@ public class PersistenceConfig {
 		}
 	}
 
+	/**
+	 * {@link}EntityManagerFactory Bean
+	 * 
+	 * @return The exist factory or a new instance if no factory exist
+	 */
 	@Bean
 	public synchronized EntityManagerFactory entityManagerFactory() {
 		if (this.entityManagerFactory == null) {
@@ -74,6 +93,11 @@ public class PersistenceConfig {
 		return this.entityManagerFactory;
 	}
 
+	/**
+	 * @{link}EntityManager Bean
+	 * 
+	 * @return The exist entity manager or a new instance if no manager exist
+	 */
 	@Bean
 	@Primary
 	public synchronized EntityManager entityManager() {
@@ -83,6 +107,11 @@ public class PersistenceConfig {
 		return this.entityManager;
 	}
 
+	/**
+	 * TransactionManager Bean
+	 * 
+	 * @return The transaction manager instance
+	 */
 	@Bean
 	@Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 	public synchronized PlatformTransactionManager transactionManager() {

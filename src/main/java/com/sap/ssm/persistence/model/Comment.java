@@ -7,7 +7,8 @@ import javax.persistence.*;
 
 /**
  * Entity implementation class for Entity: Comment
- *
+ * 
+ * @author I326996 David Lin
  */
 @Entity
 @Table(name = "T_COMMENT")

@@ -11,6 +11,11 @@ import org.springframework.stereotype.Component;
 
 import com.sap.ssm.persistence.context.DataSourceContext;
 
+/**
+ * The DataSource context used for HANA Cloud Platform
+ * 
+ * @author I326996 David Lin
+ */
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class HcpDataSourceContext implements DataSourceContext {
@@ -20,6 +25,11 @@ public class HcpDataSourceContext implements DataSourceContext {
 	@Autowired
 	private InitialContext initialContext;
 
+	/**
+	 * A method implementation for getDataSource
+	 * 
+	 * @return a HANA DataSource instance
+	 */
 	@Override
 	public synchronized DataSource getDataSource() {
 		if (dataSource == null) {

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sap.ssm.controller;
+package com.sap.ssm.testcontroller;
 
 import org.junit.Assert;
 import org.junit.Test;

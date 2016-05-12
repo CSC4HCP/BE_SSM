@@ -7,6 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Entity implementation class for Entity: User
+ * 
+ * @author I326996 David Lin
+ */
 @Entity
 @Table(name = "T_USER")
 public class User implements Serializable {

@@ -10,8 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sap.ssm.persistence.model.User;
 
 /**
- * @author David Lin
- *
+ * The JPA Repository for User
+ * 
+ * @author I326996 David Lin
  */
 @Repository
 @Transactional
