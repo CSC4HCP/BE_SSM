@@ -2,7 +2,6 @@ package com.sap.ssm.web.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -88,43 +87,48 @@ public class DocumentController {
 	 * @param session
 	 *            the session id
 	 * @return the Array of document id or error message if no file uploaded
-	 * @throws {@link}}IOException
+	 * @throws IOException
 	 */
 	@RequestMapping(value = "/upload/{session}", method = RequestMethod.POST)
-	public Object[] uploadFiles(HttpServletRequest request, @PathVariable("session") String session)
-			throws IOException {
+	public String uploadFiles(HttpServletRequest request, @PathVariable("session") String session) throws IOException {
+
+		String message;
 		if (this.multipartResolver.isMultipart(request)) {
 			MultipartHttpServletRequest mRequest = this.multipartResolver.resolveMultipart(request);
 			Iterator<String> files = mRequest.getFileNames();
-			List<String> fileIds = new ArrayList<>();
+			int fileNo = 0;
 			while (files.hasNext()) {
-				MultipartFile mFile = mRequest.getFile(files.next());
-				if (mFile != null) {
-					if (this.openCmisSession == null) {
-						initOpenCmisSession();
-					}
-					Folder rootFolder = this.openCmisSession.getRootFolder();
-					Map<String, String> newFileProps = new HashMap<>();
-					newFileProps.put(PropertyIds.OBJECT_TYPE_ID, "cmis:document");
-					newFileProps.put(PropertyIds.NAME, UUID.randomUUID().toString());
-					newFileProps.put(PropertyIds.DESCRIPTION, session);
-					newFileProps.put(PropertyIds.CREATED_BY, request.getRemoteUser());
-					newFileProps.put(PropertyIds.CREATION_DATE, (new Date(System.currentTimeMillis())).toString());
-					ContentStream cStream;
-					Document document;
-					try {
-						cStream = openCmisSession.getObjectFactory().createContentStream(mFile.getOriginalFilename(),
-								mFile.getBytes().length, mFile.getContentType(), mFile.getInputStream());
-						document = rootFolder.createDocument(newFileProps, cStream, VersioningState.NONE);
-						fileIds.add(document.getId());
-					} catch (CmisNameConstraintViolationException e) {
-						fileIds.add(e.getMessage());
+				List<MultipartFile> mFiles = mRequest.getFiles(files.next());
+				for (MultipartFile mFile : mFiles) {
+					if (mFile != null) {
+						if (this.openCmisSession == null) {
+							initOpenCmisSession();
+						}
+						Folder rootFolder = this.openCmisSession.getRootFolder();
+						Map<String, String> newFileProps = new HashMap<>();
+						newFileProps.put(PropertyIds.OBJECT_TYPE_ID, "cmis:document");
+						newFileProps.put(PropertyIds.NAME, UUID.randomUUID().toString());
+						newFileProps.put(PropertyIds.DESCRIPTION, session);
+						newFileProps.put(PropertyIds.CREATED_BY, request.getRemoteUser());
+						newFileProps.put(PropertyIds.CREATION_DATE, (new Date(System.currentTimeMillis())).toString());
+						ContentStream cStream;
+						try {
+							cStream = openCmisSession.getObjectFactory().createContentStream(
+									mFile.getOriginalFilename(), mFile.getBytes().length, mFile.getContentType(),
+									mFile.getInputStream());
+							rootFolder.createDocument(newFileProps, cStream, VersioningState.NONE);
+							fileNo++;
+						} catch (CmisNameConstraintViolationException e) {
+							throw new IllegalStateException(e);
+						}
 					}
 				}
 			}
-			return fileIds.toArray();
+			message = fileNo + " file(s) uploaded!";
+		} else {
+			message = "No file uploaded!";
 		}
-		return new String[] { "No file uploaded" };
+		return message;
 	}
 
 	/**
