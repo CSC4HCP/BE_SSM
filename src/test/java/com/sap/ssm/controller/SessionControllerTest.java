@@ -32,6 +32,7 @@ public class SessionControllerTest extends WebTest {
 		Timestamp testTime = new Timestamp(testTimeMillis);
 		String testTimeString = simpleDateFormat.format(testTime);
 
+		first.setId(1L);
 		first.setTopic("test topic 1");
 		first.setCategory("test category 1");
 		first.setDescription("test description 1");
@@ -43,6 +44,7 @@ public class SessionControllerTest extends WebTest {
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
+		second.setId(2L);
 		second.setTopic("test topic 2");
 		second.setCategory("test category 2");
 		second.setDescription("test description 2");
@@ -83,6 +85,8 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].file", Matchers.is(2)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].summary", Matchers.is("test summary 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].visibility", Matchers.is(false))).andReturn();
+
+		sessionRepositoryMock.deleteAll();
 	}
 
 	@Test
@@ -122,5 +126,7 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$.file", Matchers.is(1)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.summary", Matchers.is("test summary 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.visibility", Matchers.is(true))).andReturn();
+
+		sessionRepositoryMock.deleteAll();
 	}
 }
