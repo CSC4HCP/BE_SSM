@@ -45,26 +45,26 @@ public class UserControllerTest extends WebTest {
 
 		userRepositoryMock.saveAndFlush(first);
 		userRepositoryMock.saveAndFlush(second);
-		
+
 		this.mvc.perform(MockMvcRequestBuilders.get("/user")).andExpect(MockMvcResultMatchers.status().isOk())
-		.andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
-		.andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)))
-		.andExpect(MockMvcResultMatchers.jsonPath("$[0].name", Matchers.is("test name 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$[0].firstName", Matchers.is("test firstname 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$[0].lastName", Matchers.is("test lastname 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$[0].team", Matchers.is("test team 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$[0].role", Matchers.is("test role 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$[0].email", Matchers.is("test email 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$[1].name", Matchers.is("test name 2")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$[1].firstName", Matchers.is("test firstname 2")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$[1].lastName", Matchers.is("test lastname 2")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$[1].team", Matchers.is("test team 2")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$[1].role", Matchers.is("test role 2")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$[1].email", Matchers.is("test email 2")));		
-		
+				.andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
+				.andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].name", Matchers.is("test name 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].firstName", Matchers.is("test firstname 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].lastName", Matchers.is("test lastname 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].team", Matchers.is("test team 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].role", Matchers.is("test role 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[0].email", Matchers.is("test email 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[1].name", Matchers.is("test name 2")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[1].firstName", Matchers.is("test firstname 2")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[1].lastName", Matchers.is("test lastname 2")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[1].team", Matchers.is("test team 2")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[1].role", Matchers.is("test role 2")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$[1].email", Matchers.is("test email 2")));
+
 		userRepositoryMock.deleteAll();
 	}
-	
+
 	@Test
 	public void findOneById_shouldReturnUserById() throws Exception {
 		User first = new User();
@@ -86,19 +86,20 @@ public class UserControllerTest extends WebTest {
 
 		userRepositoryMock.saveAndFlush(first);
 		userRepositoryMock.saveAndFlush(second);
-		
-		this.mvc.perform(MockMvcRequestBuilders.get("/user/test name 1")).andExpect(MockMvcResultMatchers.status().isOk())
-		.andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("test name 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.firstName", Matchers.is("test firstname 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.lastName", Matchers.is("test lastname 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.team", Matchers.is("test team 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.role", Matchers.is("test role 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 1")));	
-		
+
+		this.mvc.perform(MockMvcRequestBuilders.get("/user/test name 1"))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("test name 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.firstName", Matchers.is("test firstname 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.lastName", Matchers.is("test lastname 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.team", Matchers.is("test team 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.role", Matchers.is("test role 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 1")));
+
 		userRepositoryMock.deleteAll();
 	}
-	
+
 	@Test
 	public void createOne_shouldReturnCreatedUser() throws Exception {
 		JSONObject jsonObject = new JSONObject();
@@ -108,19 +109,20 @@ public class UserControllerTest extends WebTest {
 		jsonObject.put("role", "test role 1");
 		jsonObject.put("email", "test email 1");
 		jsonObject.put("team", "test team 1");
-		String testRequest=jsonObject.toJSONString();
-		
-		this.mvc.perform(MockMvcRequestBuilders.post("/user").contentType(MediaType.APPLICATION_JSON).content(testRequest))
-		.andExpect(MockMvcResultMatchers.status().isOk())
-		.andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("test name 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.firstName", Matchers.is("test firstname 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.lastName", Matchers.is("test lastname 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.team", Matchers.is("SAP SSM")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.role", Matchers.is("Everyone")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 1")));	
+		String testRequest = jsonObject.toJSONString();
+
+		this.mvc.perform(
+				MockMvcRequestBuilders.post("/user").contentType(MediaType.APPLICATION_JSON).content(testRequest))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("test name 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.firstName", Matchers.is("test firstname 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.lastName", Matchers.is("test lastname 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.team", Matchers.is("SAP SSM")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.role", Matchers.is("Everyone")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 1")));
 	}
-	
+
 	@Test
 	public void updateOne_shouldReturnUpdatedUser() throws Exception {
 		User first = new User();
@@ -132,7 +134,7 @@ public class UserControllerTest extends WebTest {
 		first.setTeam("test team 1");
 
 		userRepositoryMock.saveAndFlush(first);
-		
+
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("name", "test name 1");
 		jsonObject.put("firstName", "test firstname 2");
@@ -140,18 +142,18 @@ public class UserControllerTest extends WebTest {
 		jsonObject.put("role", "test role 2");
 		jsonObject.put("email", "test email 2");
 		jsonObject.put("team", "test team 2");
-		String testRequest=jsonObject.toJSONString();
-				
-		this.mvc.perform(MockMvcRequestBuilders.put("/user/test name 1").contentType(MediaType.APPLICATION_JSON).content(testRequest))
-		.andExpect(MockMvcResultMatchers.status().isOk())
-		.andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("test name 1")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.firstName", Matchers.is("test firstname 2")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.lastName", Matchers.is("test lastname 2")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.team", Matchers.is("test team 2")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.role", Matchers.is("test role 2")))
-		.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 2")));	
+		String testRequest = jsonObject.toJSONString();
+
+		this.mvc.perform(MockMvcRequestBuilders.put("/user/test name 1").contentType(MediaType.APPLICATION_JSON)
+				.content(testRequest)).andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("test name 1")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.firstName", Matchers.is("test firstname 2")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.lastName", Matchers.is("test lastname 2")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.team", Matchers.is("test team 2")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.role", Matchers.is("test role 2")))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 2")));
 	}
-	
+
 	@Test
 	public void deleteOne_shouldReturnSuccess() throws Exception {
 		User first = new User();
@@ -162,9 +164,10 @@ public class UserControllerTest extends WebTest {
 		first.setRole("test role 1");
 		first.setTeam("test team 1");
 		userRepositoryMock.saveAndFlush(first);
-		this.mvc.perform(MockMvcRequestBuilders.delete("/user/test name 1")).andExpect(MockMvcResultMatchers.status().isOk())
-		.andExpect(MockMvcResultMatchers.content().string("Delete Success"));
-		
+		this.mvc.perform(MockMvcRequestBuilders.delete("/user/test name 1"))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(MockMvcResultMatchers.content().string("Delete Success"));
+
 		userRepositoryMock.deleteAll();
 	}
 }
