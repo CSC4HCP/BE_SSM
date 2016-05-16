@@ -67,9 +67,15 @@ public class SessionService {
 	 * 
 	 * @param id
 	 *            {@link}Session's id
+	 * @return state message
 	 */
-	public void deleteOneById(@NotNull Long id) {
-		sessionRepository.delete(id);
+	public String deleteOneById(@NotNull Long id) {
+		try {
+			sessionRepository.delete(id);
+			return "Delete session successfully";
+		} catch (IllegalArgumentException e) {
+			return e.getMessage();
+		}
 	}
 
 	/**

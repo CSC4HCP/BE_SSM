@@ -65,8 +65,8 @@ public class SessionController {
 	 *            session id
 	 */
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-	public void deleteOneById(@PathVariable("id") Long id) {
-		sessionService.deleteOneById(id);
+	public String deleteOneById(@PathVariable("id") Long id) {
+		return sessionService.deleteOneById(id);
 	}
 
 	/**
