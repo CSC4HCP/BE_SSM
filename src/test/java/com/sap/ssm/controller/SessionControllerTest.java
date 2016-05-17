@@ -2,7 +2,6 @@ package com.sap.ssm.controller;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -17,9 +16,6 @@ import org.springframework.util.MultiValueMap;
 import com.sap.ssm.WebTest;
 import com.sap.ssm.persistence.model.Session;
 import com.sap.ssm.persistence.repository.SessionRepository;
-
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 
 public class SessionControllerTest extends WebTest {
 
@@ -172,7 +168,6 @@ public class SessionControllerTest extends WebTest {
 
 		long testTimeMillis = System.currentTimeMillis();
 		Timestamp testTime = new Timestamp(testTimeMillis);
-		String testTimeString = simpleDateFormat.format(testTime);
 
 		first.setId(1L);
 		first.setTopic("test topic 1");
