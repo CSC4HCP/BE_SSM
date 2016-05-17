@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.sap.ssm.controller;
 
 import org.hamcrest.Matchers;
@@ -16,14 +13,16 @@ import com.sap.ssm.persistence.repository.UserRepository;
 
 import net.minidev.json.JSONObject;
 
-/**
+/*
  * @author Likai Deng
- *
  */
 public class UserControllerTest extends WebTest {
 	@Autowired
 	private UserRepository userRepositoryMock;
 
+	/**
+	 * Test for API - <b>"/user"</b> Method - <b>"GET"</b>
+	 */
 	@Test
 	public void findAll_shouldReturnAllUsers() throws Exception {
 		User first = new User();
@@ -60,11 +59,14 @@ public class UserControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].lastName", Matchers.is("test lastname 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].team", Matchers.is("test team 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].role", Matchers.is("test role 2")))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[1].email", Matchers.is("test email 2")));
+				.andExpect(MockMvcResultMatchers.jsonPath("$[1].email", Matchers.is("test email 2"))).andReturn();
 
 		userRepositoryMock.deleteAll();
 	}
 
+	/**
+	 * Test for API - <b>"/user/{id}"</b> Method - <b>"GET"</b>
+	 */
 	@Test
 	public void findOneById_shouldReturnUserById() throws Exception {
 		User first = new User();
@@ -95,11 +97,14 @@ public class UserControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$.lastName", Matchers.is("test lastname 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.team", Matchers.is("test team 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.role", Matchers.is("test role 1")))
-				.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 1")));
+				.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 1"))).andReturn();
 
 		userRepositoryMock.deleteAll();
 	}
 
+	/**
+	 * Test for API - <b>"/user"</b> Method - <b>"POST"</b>
+	 */
 	@Test
 	public void createOne_shouldReturnCreatedUser() throws Exception {
 		JSONObject jsonObject = new JSONObject();
@@ -120,9 +125,12 @@ public class UserControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$.lastName", Matchers.is("test lastname 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.team", Matchers.is("SAP SSM")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.role", Matchers.is("Everyone")))
-				.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 1")));
+				.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 1"))).andReturn();
 	}
 
+	/**
+	 * Test for API - <b>"/user/{id}"</b> Method - <b>"PUT"</b>
+	 */
 	@Test
 	public void updateOne_shouldReturnUpdatedUser() throws Exception {
 		User first = new User();
@@ -151,9 +159,12 @@ public class UserControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$.lastName", Matchers.is("test lastname 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.team", Matchers.is("test team 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.role", Matchers.is("test role 2")))
-				.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 2")));
+				.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 2"))).andReturn();
 	}
 
+	/**
+	 * Test for API - <b>"/user/{id}"</b> Method - <b>"DELETE"</b>
+	 */
 	@Test
 	public void deleteOne_shouldReturnSuccess() throws Exception {
 		User first = new User();
@@ -166,7 +177,7 @@ public class UserControllerTest extends WebTest {
 		userRepositoryMock.saveAndFlush(first);
 		this.mvc.perform(MockMvcRequestBuilders.delete("/user/test name 1"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.content().string("Delete Success"));
+				.andExpect(MockMvcResultMatchers.content().string("Delete Success")).andReturn();
 
 		userRepositoryMock.deleteAll();
 	}

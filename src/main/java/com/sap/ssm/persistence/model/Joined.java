@@ -41,6 +41,14 @@ public class Joined implements Serializable {
 	}
 
 	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
 	 * @return the userId
 	 */
 	public String getUserId() {
@@ -56,7 +64,7 @@ public class Joined implements Serializable {
 	}
 
 	/**
-	 * @return the session
+	 * @return the session id
 	 */
 	public Long getSession() {
 		return session;
@@ -64,7 +72,7 @@ public class Joined implements Serializable {
 
 	/**
 	 * @param session
-	 *            the session to set
+	 *            the session id to set
 	 */
 	public void setSession(Long session) {
 		this.session = session;

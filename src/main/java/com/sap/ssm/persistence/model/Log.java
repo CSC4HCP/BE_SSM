@@ -1,7 +1,7 @@
 package com.sap.ssm.persistence.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.*;
 
@@ -34,7 +34,7 @@ public class Log implements Serializable {
 	private Long session;
 
 	@Column(name = "DATE")
-	private Date date;
+	private Timestamp date;
 
 	/**
 	 * @return the id
@@ -91,7 +91,7 @@ public class Log implements Serializable {
 	/**
 	 * @return the date
 	 */
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
@@ -99,7 +99,7 @@ public class Log implements Serializable {
 	 * @param date
 	 *            the date to set
 	 */
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 }
