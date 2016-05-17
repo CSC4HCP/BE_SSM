@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.sap.ssm.controller;
 
 import org.hamcrest.Matchers;
@@ -16,13 +13,16 @@ import com.sap.ssm.persistence.repository.UserRepository;
 
 import net.minidev.json.JSONObject;
 
-/**
+/*
  * @author Likai Deng
  */
 public class UserControllerTest extends WebTest {
     @Autowired
     private UserRepository userRepositoryMock;
 
+    /**
+     * Test for API - <b>"/user"</b> Method - <b>"GET"</b>
+     */
     @Test
     public void findAll_shouldReturnAllUsers() throws Exception {
 	User first = new User();
@@ -64,6 +64,9 @@ public class UserControllerTest extends WebTest {
 	userRepositoryMock.deleteAll();
     }
 
+    /**
+     * Test for API - <b>"/user/{id}"</b> Method - <b>"GET"</b>
+     */
     @Test
     public void findOneById_shouldReturnUserById() throws Exception {
 	User first = new User();
@@ -99,6 +102,9 @@ public class UserControllerTest extends WebTest {
 	userRepositoryMock.deleteAll();
     }
 
+    /**
+     * Test for API - <b>"/user"</b> Method - <b>"POST"</b>
+     */
     @Test
     public void createOne_shouldReturnCreatedUser() throws Exception {
 	JSONObject jsonObject = new JSONObject();
@@ -122,6 +128,9 @@ public class UserControllerTest extends WebTest {
 		.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 1"))).andReturn();
     }
 
+    /**
+     * Test for API - <b>"/user/{id}"</b> Method - <b>"PUT"</b>
+     */
     @Test
     public void updateOne_shouldReturnUpdatedUser() throws Exception {
 	User first = new User();
@@ -153,6 +162,9 @@ public class UserControllerTest extends WebTest {
 		.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 2"))).andReturn();
     }
 
+    /**
+     * Test for API - <b>"/user/{id}"</b> Method - <b>"DELETE"</b>
+     */
     @Test
     public void deleteOne_shouldReturnSuccess() throws Exception {
 	User first = new User();
