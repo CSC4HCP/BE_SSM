@@ -28,6 +28,13 @@ public class SessionControllerTest extends WebTest {
 
 	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
+	/**
+	 * Test for an API<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"GET"</b>
+	 */
+	
 	@Test
 	public void findAll_ShouldReturnFoundSessions() throws Exception {
 
@@ -95,6 +102,12 @@ public class SessionControllerTest extends WebTest {
 		sessionRepositoryMock.deleteAll();
 	}
 
+	/**
+	 * Test for an API（findOneById)<br>
+	 * <br>
+	 *  <b>API - "/session/{id}"</b> <br>
+	 * Method - <b>"GET"</b>
+	 */
 	@Test
 	public void findOneById_ShouldReturnFoundSession() throws Exception {
 
@@ -136,6 +149,13 @@ public class SessionControllerTest extends WebTest {
 		sessionRepositoryMock.deleteAll();
 	}
 
+	/**
+	 * Test for an API（createOne)<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"post"</b>
+	 */
+	
 	@Test
 	public void createOne_ShouldReturnSession() throws Exception {
 
@@ -164,6 +184,14 @@ public class SessionControllerTest extends WebTest {
 
 		sessionRepositoryMock.deleteAll();
 	}
+
+	/**
+	 * Test for an API（updateOne)<br>
+	 * <br>
+	 *  <b>API - "/session/{id}"</b> <br>
+	 * Method - <b>"put"</b>
+	 */
+	
 
 	@Test
 	public void updateOne_ShouldReturnUpdatedSession() throws Exception {
@@ -210,6 +238,16 @@ public class SessionControllerTest extends WebTest {
 		sessionRepositoryMock.deleteAll();
 	}
 
+	/**
+	 * Test for an API（findBySeveralConditions)<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"get"</b>
+	 * @param owner
+	 * to find a session by owner
+	 */
+	
+
 	@Test
 	public void findOneByOwner_ShouldReturnFoundSession() throws Exception {
 
@@ -250,6 +288,15 @@ public class SessionControllerTest extends WebTest {
 
 		sessionRepositoryMock.deleteAll();
 	}
+	/**
+	 * Test for an API（findBySeveralConditions)<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"get"</b>
+	 * @param category
+	 * to find a session by category
+	 */
+	
 
 	@Test
 	public void findByCategory_ShouldReturnFoundSessions() throws Exception {
@@ -317,6 +364,15 @@ public class SessionControllerTest extends WebTest {
 
 		sessionRepositoryMock.deleteAll();
 	}
+	/**
+	 * Test for an API（findBySeveralConditions)<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"get"</b>
+	 * @param status
+	 * to find a session by status
+	 */
+	
 
 	@Test
 	public void findByStatus_ShouldReturnFoundSessions() throws Exception {
@@ -384,6 +440,15 @@ public class SessionControllerTest extends WebTest {
 
 		sessionRepositoryMock.deleteAll();
 	}
+	/**
+	 * Test for an API（findBySeveralConditions)<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"get"</b>
+	 * @param visibility
+	 * to find a session by visibility
+	 */
+	
 
 	@Test
 	public void findByVisibility_ShouldReturnFoundSessions() throws Exception {
@@ -440,6 +505,16 @@ public class SessionControllerTest extends WebTest {
 
 		sessionRepositoryMock.deleteAll();
 	}
+	/**
+	 * Test for an API（findBySeveralConditions)<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"get"</b>
+	 * @param owner
+	 * @param category
+	 * to find a session by owner,category
+	 */
+	
 
 	@Test
 	public void findByOwnerAndCategory_ShouldReturnFoundSessions() throws Exception {
@@ -512,6 +587,16 @@ public class SessionControllerTest extends WebTest {
 
 		sessionRepositoryMock.deleteAll();
 	}
+	/**
+	 * Test for an API（findBySeveralConditions)<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"get"</b>
+	 * @param owner
+	 * @param status
+	 * to find a session by owner,status
+	 */
+	
 
 	@Test
 	public void findByOwnerAndStatus_ShouldReturnFoundSessions() throws Exception {
@@ -584,6 +669,16 @@ public class SessionControllerTest extends WebTest {
 
 		sessionRepositoryMock.deleteAll();
 	}
+	/**
+	 * Test for an API（findBySeveralConditions)<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"get"</b>
+	 * @param category
+	 * @param visibility
+	 * to find a session by owner,visibility
+	 */
+	
 
 	@Test
 	public void findByCategoryAndVisibility_ShouldReturnFoundSessions() throws Exception {
@@ -657,6 +752,16 @@ public class SessionControllerTest extends WebTest {
 		sessionRepositoryMock.deleteAll();
 	}
 
+	/**
+	 * Test for an API（findBySeveralConditions)<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"get"</b>
+	 * @param owner
+	 * @param visibility
+	 * to find a session by owner,visibility
+	 */
+	
 	@Test
 	public void findByOwnerAndVisibility_ShouldReturnFoundSessions() throws Exception {
 
@@ -728,7 +833,16 @@ public class SessionControllerTest extends WebTest {
 
 		sessionRepositoryMock.deleteAll();
 	}
-
+	/**
+	 * Test for an API（findBySeveralConditions)<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"get"</b>
+	 * @param status
+	 * @param visibility
+	 * to find a session by status,visibility
+	 */
+	
 	@Test
 	public void findByStatusAndVisibility_ShouldReturnFoundSessions() throws Exception {
 
@@ -800,7 +914,17 @@ public class SessionControllerTest extends WebTest {
 
 		sessionRepositoryMock.deleteAll();
 	}
-
+	/**
+	 * Test for an API（findBySeveralConditions)<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"get"</b>
+	 * @param owner
+	 * @param category
+	 * @param visibility
+	 * to find a session by owner,category,visibility
+	 */
+	
 	@Test
 	public void findByOwnerAndCategoryAndVisibility_ShouldReturnFoundSessions() throws Exception {
 
@@ -887,7 +1011,17 @@ public class SessionControllerTest extends WebTest {
 
 		sessionRepositoryMock.deleteAll();
 	}
-
+	/**
+	 * Test for an API（findBySeveralConditions)<br>
+	 * <br>
+	 *  <b>API - "/session"</b> <br>
+	 * Method - <b>"get"</b>
+	 * @param owner
+	 * @param status
+	 * @param visibility
+	 * to find a session by owner,status,visibility
+	 */
+	
 	@Test
 	public void findByOwnerAndStatusAndVisibility_ShouldReturnFoundSessions() throws Exception {
 
