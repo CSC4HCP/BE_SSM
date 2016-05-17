@@ -1,7 +1,7 @@
 package com.sap.ssm.persistence.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.*;
 
@@ -34,13 +34,21 @@ public class Comment implements Serializable {
 	private String content;
 
 	@Column(name = "DATE", nullable = false)
-	private Date date;
+	private Timestamp date;
 
 	/**
 	 * @return the id
 	 */
 	public Long getId() {
 		return id;
+	}
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	/**
@@ -91,7 +99,7 @@ public class Comment implements Serializable {
 	/**
 	 * @return the date
 	 */
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
@@ -99,7 +107,7 @@ public class Comment implements Serializable {
 	 * @param date
 	 *            the date to set
 	 */
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 }
