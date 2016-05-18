@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sap.ssm.persistence.model.Joined;
@@ -63,7 +64,7 @@ public class JoinedController {
 	 * @return the {@link}Collection of {@link}JoinedDetailResponse object if not null.
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public Collection<JoinedDetailResponse> findByUserId(@PathVariable("userId") String userId) {
+	public Collection<JoinedDetailResponse> findByUserId(@RequestParam("userId") String userId) {
 		return CollectionUtils.collect(joinedService.findByUserId(userId), DETAIL_RESPONSE_TRANSFORMER);
 	}
 	
@@ -77,9 +78,8 @@ public class JoinedController {
 	 *            the session id.
 	 * @return a {@link}JoinedDetailResponse object if not null.
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public JoinedDetailResponse findOneById(@PathVariable("session") Long session) {
-		Joined joined = joinedService.findBySessionId(session);
-		return joined == null? null : new JoinedDetailResponse(joined);
+	@RequestMapping(value = "/{session}", method = RequestMethod.GET)
+	public Collection<JoinedDetailResponse> findBySession(@PathVariable("session") Long session) {
+		return CollectionUtils.collect(joinedService.findBySessionId(session), DETAIL_RESPONSE_TRANSFORMER);
 	}
 }

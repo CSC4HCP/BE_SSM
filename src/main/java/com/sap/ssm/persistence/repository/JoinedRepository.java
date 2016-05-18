@@ -33,5 +33,5 @@ public interface JoinedRepository extends JpaRepository<Joined, Long> {
 	 *            Session id
 	 * @return List<Joined> one join object
 	 */
-	Joined findBySessionId(Long Session);
+	List<Joined> findBySession(Long Session);
 }

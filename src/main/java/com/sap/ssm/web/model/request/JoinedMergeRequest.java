@@ -1,7 +1,9 @@
 package com.sap.ssm.web.model.request;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * The JoinedMergeRequest is a request object which used to store joined data before
@@ -16,10 +18,17 @@ public class JoinedMergeRequest implements Serializable {
 	 */
 	private static final long serialVersionUID = -5285472004206334355L;
 	
+	@NotBlank
 	private Long id;
+	
+	@NotBlank
 	private String userId;
+	
+	@NotBlank
 	private Long session;
-	private Date date;
+	
+	@NotBlank
+	private Timestamp date;
 	
 	/**
 	 * Non-param constructor
@@ -52,11 +61,11 @@ public class JoinedMergeRequest implements Serializable {
 		this.session = session;
 	}
 
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 

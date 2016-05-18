@@ -1,6 +1,7 @@
 package com.sap.ssm.web.model.response;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.sap.ssm.persistence.model.Joined;
@@ -67,8 +68,9 @@ public class JoinedDetailResponse implements Serializable {
 		this.session = session;
 	}
 
-	public Date getDate() {
-		return date;
+	public String getDate() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+		return dateFormat.format(date);
 	}
 
 	public void setDate(Date date) {

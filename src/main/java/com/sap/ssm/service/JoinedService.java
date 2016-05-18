@@ -55,8 +55,8 @@ public class JoinedService {
 	 *            {@link}Session's session
 	 * @return a set of {@link}Joined objects
 	 */
-	public Joined findBySessionId(@NotNull Long session) {
-		return joinedRepository.findBySessionId(session);
+	public List<Joined> findBySessionId(@NotNull Long session) {
+		return joinedRepository.findBySession(session);
 	}
 	
 	/**
@@ -68,7 +68,6 @@ public class JoinedService {
 	 *            the {@link}Joined object
 	 */
 	private void mergeScalarProperties(JoinedMergeRequest joinedMergeRequest, Joined joined) {
-		joined.setId(joinedMergeRequest.getId());
 		joined.setUserId(joinedMergeRequest.getUserId());
 		joined.setSession(joinedMergeRequest.getSession());
 		joined.setDate(joinedMergeRequest.getDate());
