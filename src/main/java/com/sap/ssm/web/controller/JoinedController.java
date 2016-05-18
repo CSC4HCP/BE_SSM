@@ -29,7 +29,7 @@ import com.sap.ssm.web.model.response.JoinedDetailResponse;
 public class JoinedController {
 	@Autowired
 	private JoinedService joinedService;
-	
+
 	private Transformer<Joined, JoinedDetailResponse> DETAIL_RESPONSE_TRANSFORMER = new Transformer<Joined, JoinedDetailResponse>() {
 
 		@Override
@@ -37,7 +37,7 @@ public class JoinedController {
 			return new JoinedDetailResponse(input);
 		}
 	};
-	
+
 	/**
 	 * The API to <b>CREATE</b> a new joined object.<br>
 	 * <br>
@@ -52,7 +52,7 @@ public class JoinedController {
 	public JoinedDetailResponse createOne(@NotNull @RequestBody JoinedMergeRequest joinedMergeRequest) {
 		return new JoinedDetailResponse(joinedService.createOne(joinedMergeRequest));
 	}
-	
+
 	/**
 	 * The API to <b>GET</b> a set of joined objects by userId.<br>
 	 * <br>
@@ -61,13 +61,14 @@ public class JoinedController {
 	 * 
 	 * @param userId
 	 *            the user id.
-	 * @return the {@link}Collection of {@link}JoinedDetailResponse object if not null.
+	 * @return the {@link}Collection of {@link}JoinedDetailResponse object if
+	 *         not null.
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public Collection<JoinedDetailResponse> findByUserId(@RequestParam("userId") String userId) {
 		return CollectionUtils.collect(joinedService.findByUserId(userId), DETAIL_RESPONSE_TRANSFORMER);
 	}
-	
+
 	/**
 	 * The API to <b>GET</b> one joined object by session id.<br>
 	 * <br>

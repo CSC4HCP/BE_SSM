@@ -16,7 +16,7 @@ import com.sap.ssm.persistence.model.Joined;
 @Repository
 @Transactional
 public interface JoinedRepository extends JpaRepository<Joined, Long> {
-	
+
 	/**
 	 * Find join objects by one's userId
 	 * 
@@ -25,7 +25,7 @@ public interface JoinedRepository extends JpaRepository<Joined, Long> {
 	 * @return List<Joined> a list of join objects
 	 */
 	List<Joined> findByUserId(String userId);
-	
+
 	/**
 	 * Find join objects by session id
 	 * 

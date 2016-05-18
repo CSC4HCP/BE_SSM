@@ -119,6 +119,7 @@ public class CommentService {
 	public List<Comment> findByAuthorAndSession(@NotNull String author, @NotNull Long session) {
 		return commentRepository.findByAuthorAndSession(author, session);
 	}
+
 	/**
 	 * @param date
 	 * @param id
@@ -127,7 +128,6 @@ public class CommentService {
 	 * @param author
 	 *            the date,id,session,content,author to set
 	 */
-
 	private void mergeScalarProperties(CommentMergeRequest commentMergeRequest, Comment comment) {
 		comment.setDate(commentMergeRequest.getDate());
 		comment.setId(commentMergeRequest.getId());

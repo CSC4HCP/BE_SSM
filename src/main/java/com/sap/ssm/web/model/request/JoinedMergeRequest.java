@@ -6,8 +6,8 @@ import java.sql.Timestamp;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
- * The JoinedMergeRequest is a request object which used to store joined data before
- * the data merged into a {@link}Joined object
+ * The JoinedMergeRequest is a request object which used to store joined data
+ * before the data merged into a {@link}Joined object
  * 
  * @author I326962 Zero Yu
  */
@@ -17,19 +17,19 @@ public class JoinedMergeRequest implements Serializable {
 	 * Generated serial version id
 	 */
 	private static final long serialVersionUID = -5285472004206334355L;
-	
+
 	@NotBlank
 	private Long id;
-	
+
 	@NotBlank
 	private String userId;
-	
+
 	@NotBlank
 	private Long session;
-	
+
 	@NotBlank
 	private Timestamp date;
-	
+
 	/**
 	 * Non-param constructor
 	 */

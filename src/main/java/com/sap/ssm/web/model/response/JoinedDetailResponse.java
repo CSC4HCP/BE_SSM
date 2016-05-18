@@ -7,8 +7,8 @@ import java.util.Date;
 import com.sap.ssm.persistence.model.Joined;
 
 /**
- * The <b>{@link}JoinedDetailResponse</b> is a response object which includes joined
- * data used by {@link}RestController to return to client
+ * The <b>{@link}JoinedDetailResponse</b> is a response object which includes
+ * joined data used by {@link}RestController to return to client
  * 
  * @author I326962 Zero Yu
  */
@@ -23,14 +23,14 @@ public class JoinedDetailResponse implements Serializable {
 	private String userId;
 	private Long session;
 	private Date date;
-	
+
 	/**
 	 * Non-param constructor
 	 */
 	public JoinedDetailResponse() {
 
 	}
-	
+
 	/**
 	 * Constructor
 	 * 
@@ -76,5 +76,5 @@ public class JoinedDetailResponse implements Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
+
 }

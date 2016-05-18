@@ -20,10 +20,10 @@ import com.sap.ssm.web.model.request.JoinedMergeRequest;
 @Service
 @Transactional
 public class JoinedService {
-	
+
 	@Autowired
 	private JoinedRepository joinedRepository;
-	
+
 	/**
 	 * Create a joined object
 	 * 
@@ -36,7 +36,7 @@ public class JoinedService {
 		mergeScalarProperties(joinedMergeRequest, joined);
 		return joinedRepository.saveAndFlush(joined);
 	}
-	
+
 	/**
 	 * Find join objects by userId
 	 * 
@@ -47,7 +47,7 @@ public class JoinedService {
 	public List<Joined> findByUserId(@NotNull String userId) {
 		return joinedRepository.findByUserId(userId);
 	}
-	
+
 	/**
 	 * Find join objects by session
 	 * 
@@ -58,9 +58,10 @@ public class JoinedService {
 	public List<Joined> findBySessionId(@NotNull Long session) {
 		return joinedRepository.findBySession(session);
 	}
-	
+
 	/**
-	 * Merge joined data from a {@link}JoinedMergeRequest to a {@link}Joined object
+	 * Merge joined data from a {@link}JoinedMergeRequest to a {@link}Joined
+	 * object
 	 * 
 	 * @param joinedMergeRequest
 	 *            the request include all user information
@@ -72,5 +73,5 @@ public class JoinedService {
 		joined.setSession(joinedMergeRequest.getSession());
 		joined.setDate(joinedMergeRequest.getDate());
 	}
-	
+
 }
