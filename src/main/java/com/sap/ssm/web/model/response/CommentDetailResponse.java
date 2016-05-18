@@ -1,48 +1,55 @@
-package com.sap.ssm.persistence.model;
+package com.sap.ssm.web.model.response;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
-import javax.persistence.*;
+import com.sap.ssm.persistence.model.Comment;
+import com.sap.ssm.persistence.model.Session;
 
-/**
- * Entity implementation class for Entity: Comment
- * 
- * @author I326996 David Lin
- */
-@Entity
-@Table(name = "T_COMMENT")
-public class Comment implements Serializable {
+public class CommentDetailResponse {
 
-	/**
-	 * Generated serial version uid
-	 */
-	private static final long serialVersionUID = 2493665474053947254L;
-
-	@Id
-	@GeneratedValue
-	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "Author", nullable = false)
 	private String author;
 
-	@Column(name = "SESSION", nullable = false)
 	private Long session;
 
-	@Column(name = "CONTENT", nullable = false)
 	private String content;
 
-	@Column(name = "DATE", nullable = false)
 	private Timestamp date;
 
+	public CommentDetailResponse() {
+
+	}
+
+	public CommentDetailResponse(Comment comment) {
+		/**
+		 * set the id
+		 */
+		this.setId(comment.getId());
+		/**
+		 * get the content
+		 */
+		this.setContent(comment.getContent());
+		/**
+		 * get the session
+		 */
+		this.setSession(comment.getSession());
+		/**
+		 * get the date
+		 */
+		this.setDate(comment.getDate());
+		/**
+		 * get the author
+		 */
+		this.setAuthor(comment.getAuthor());
+	}
 	/**
-	 * @return the id
+	 * get the id
 	 */
 	public Long getId() {
 		return id;
 	}
-
 	/**
 	 * @param id
 	 *            the id to set
@@ -50,14 +57,12 @@ public class Comment implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	/**
-	 * @return the author
+	 * get the author
 	 */
 	public String getAuthor() {
 		return author;
 	}
-
 	/**
 	 * @param author
 	 *            the author to set
@@ -65,14 +70,12 @@ public class Comment implements Serializable {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-
 	/**
-	 * @return the session
+	 * get the session
 	 */
 	public Long getSession() {
 		return session;
 	}
-
 	/**
 	 * @param session
 	 *            the session to set
@@ -80,14 +83,12 @@ public class Comment implements Serializable {
 	public void setSession(Long session) {
 		this.session = session;
 	}
-
 	/**
-	 * @return the content
+	 * get the content
 	 */
 	public String getContent() {
 		return content;
 	}
-
 	/**
 	 * @param content
 	 *            the content to set
@@ -95,14 +96,12 @@ public class Comment implements Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
 	/**
-	 * @return the date
+	 * get the date
 	 */
 	public Timestamp getDate() {
 		return date;
 	}
-
 	/**
 	 * @param date
 	 *            the date to set

@@ -1,44 +1,45 @@
-package com.sap.ssm.persistence.model;
+package com.sap.ssm.web.model.request;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.*;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
- * Entity implementation class for Entity: Comment
+ * The SessionMergeRequest is a request object which used to store session data
+ * before the data merged into a {@link}Session object
  * 
- * @author I326996 David Lin
+ * @author Yuan Zhang
  */
-@Entity
-@Table(name = "T_COMMENT")
-public class Comment implements Serializable {
-
+public class CommentMergeRequest implements Serializable {
 	/**
 	 * Generated serial version uid
 	 */
-	private static final long serialVersionUID = 2493665474053947254L;
+	private static final long serialVersionUID = -1272715216787472506L;
 
-	@Id
-	@GeneratedValue
-	@Column(name = "ID")
+	@NotBlank
 	private Long id;
 
-	@Column(name = "Author", nullable = false)
+	@NotBlank
 	private String author;
 
-	@Column(name = "SESSION", nullable = false)
+	@NotBlank
 	private Long session;
 
-	@Column(name = "CONTENT", nullable = false)
+	@NotBlank
 	private String content;
 
-	@Column(name = "DATE", nullable = false)
+	@NotBlank
 	private Timestamp date;
 
+	public CommentMergeRequest() {
+
+	}
+
 	/**
-	 * @return the id
+	 * get the id
 	 */
+
 	public Long getId() {
 		return id;
 	}
@@ -52,8 +53,9 @@ public class Comment implements Serializable {
 	}
 
 	/**
-	 * @return the author
+	 * get the author
 	 */
+
 	public String getAuthor() {
 		return author;
 	}
@@ -62,13 +64,15 @@ public class Comment implements Serializable {
 	 * @param author
 	 *            the author to set
 	 */
+
 	public void setAuthor(String author) {
 		this.author = author;
 	}
 
 	/**
-	 * @return the session
+	 * get the session
 	 */
+
 	public Long getSession() {
 		return session;
 	}
@@ -82,8 +86,9 @@ public class Comment implements Serializable {
 	}
 
 	/**
-	 * @return the content
+	 * get the content
 	 */
+
 	public String getContent() {
 		return content;
 	}
@@ -97,7 +102,7 @@ public class Comment implements Serializable {
 	}
 
 	/**
-	 * @return the date
+	 * get the date
 	 */
 	public Timestamp getDate() {
 		return date;
@@ -110,4 +115,5 @@ public class Comment implements Serializable {
 	public void setDate(Timestamp date) {
 		this.date = date;
 	}
+
 }
