@@ -1,10 +1,8 @@
 package com.sap.ssm.web.model.response;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 
 import com.sap.ssm.persistence.model.Comment;
-import com.sap.ssm.persistence.model.Session;
 
 public class CommentDetailResponse {
 
@@ -44,12 +42,14 @@ public class CommentDetailResponse {
 		 */
 		this.setAuthor(comment.getAuthor());
 	}
+
 	/**
 	 * get the id
 	 */
 	public Long getId() {
 		return id;
 	}
+
 	/**
 	 * @param id
 	 *            the id to set
@@ -57,12 +57,14 @@ public class CommentDetailResponse {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	/**
 	 * get the author
 	 */
 	public String getAuthor() {
 		return author;
 	}
+
 	/**
 	 * @param author
 	 *            the author to set
@@ -70,12 +72,14 @@ public class CommentDetailResponse {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+
 	/**
 	 * get the session
 	 */
 	public Long getSession() {
 		return session;
 	}
+
 	/**
 	 * @param session
 	 *            the session to set
@@ -83,12 +87,14 @@ public class CommentDetailResponse {
 	public void setSession(Long session) {
 		this.session = session;
 	}
+
 	/**
 	 * get the content
 	 */
 	public String getContent() {
 		return content;
 	}
+
 	/**
 	 * @param content
 	 *            the content to set
@@ -96,12 +102,14 @@ public class CommentDetailResponse {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	/**
 	 * get the date
 	 */
 	public Timestamp getDate() {
 		return date;
 	}
+
 	/**
 	 * @param date
 	 *            the date to set
