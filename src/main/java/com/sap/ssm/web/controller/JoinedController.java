@@ -68,21 +68,18 @@ public class JoinedController {
 	@RequestMapping(method = RequestMethod.GET)
 	public Collection<JoinedDetailResponse> findBySeveralConditions(@RequestParam("userId") Optional<String> userId,
 			@RequestParam("session") Optional<Long> session) {
-		if(userId.isPresent()){
-			if(session.isPresent()){
-				return CollectionUtils.collect(joinedService.findByUserIdAndSession(userId.get(),
-						session.get()), DETAIL_RESPONSE_TRANSFORMER);
+		if (userId.isPresent()) {
+			if (session.isPresent()) {
+				return CollectionUtils.collect(joinedService.findByUserIdAndSession(userId.get(), session.get()),
+						DETAIL_RESPONSE_TRANSFORMER);
 			} else {
-				return CollectionUtils.collect(joinedService.findByUserId(userId.get()), 
-						DETAIL_RESPONSE_TRANSFORMER);
+				return CollectionUtils.collect(joinedService.findByUserId(userId.get()), DETAIL_RESPONSE_TRANSFORMER);
 			}
-		} else{
-			if(session.isPresent()){
-				return CollectionUtils.collect(joinedService.findBySession(session.get()), 
-						DETAIL_RESPONSE_TRANSFORMER);
-			} else{
-				return CollectionUtils.collect(joinedService.findAll(), 
-						DETAIL_RESPONSE_TRANSFORMER);
+		} else {
+			if (session.isPresent()) {
+				return CollectionUtils.collect(joinedService.findBySession(session.get()), DETAIL_RESPONSE_TRANSFORMER);
+			} else {
+				return CollectionUtils.collect(joinedService.findAll(), DETAIL_RESPONSE_TRANSFORMER);
 			}
 		}
 

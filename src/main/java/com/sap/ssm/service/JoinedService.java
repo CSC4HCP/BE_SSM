@@ -32,7 +32,7 @@ public class JoinedService {
 	public List<Joined> findAll() {
 		return joinedRepository.findAll();
 	}
-	
+
 	/**
 	 * Create a joined object
 	 * 
@@ -67,7 +67,7 @@ public class JoinedService {
 	public List<Joined> findBySession(@NotNull Long session) {
 		return joinedRepository.findBySession(session);
 	}
-	
+
 	/**
 	 * Find join objects by session
 	 * 
