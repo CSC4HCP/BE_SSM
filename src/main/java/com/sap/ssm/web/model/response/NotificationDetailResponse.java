@@ -1,41 +1,29 @@
-package com.sap.ssm.persistence.model;
+package com.sap.ssm.web.model.response;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.sap.ssm.persistence.model.Notification;
 
-/**
- * Entity implementation class for Entity: Notification
- */
-@Entity
-@Table(name = "T_NOTIFICATION")
-public class Notification implements Serializable {
+public class NotificationDetailResponse implements Serializable {
 
     /**
-     * Generated serial version uid
+     * Generated serial version id
      */
-    private static final long serialVersionUID = -3144963661473363024L;
+    private static final long serialVersionUID = -5945317077332386084L;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "ID")
     private Long id;
 
-    @Column(name = "TARGET")
     private String target;
 
-    @Column(name = "CONTENT")
     private String content;
 
-    @Column(name = "CHECKED")
     private Boolean checked;
 
-    public Notification() {
-	super();
+    public NotificationDetailResponse(Notification notification) {
+	this.setId(notification.getId());
+	this.setContent(notification.getContent());
+	this.setChecked(notification.getChecked());
+	this.setTarget(notification.getTarget());
     }
 
     /**

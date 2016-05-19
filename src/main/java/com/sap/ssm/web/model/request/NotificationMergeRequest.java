@@ -1,42 +1,35 @@
-package com.sap.ssm.persistence.model;
+/**
+ * 
+ */
+package com.sap.ssm.web.model.request;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
- * Entity implementation class for Entity: Notification
+ * * The NotificationMergeRequest is a request object which used to store
+ * notification data before the data merged into a {@link}Notification object
+ * @author Likai Deng
  */
-@Entity
-@Table(name = "T_NOTIFICATION")
-public class Notification implements Serializable {
+public class NotificationMergeRequest implements Serializable {
 
     /**
-     * Generated serial version uid
+     * Generated serial version id
      */
-    private static final long serialVersionUID = -3144963661473363024L;
+    private static final long serialVersionUID = 1655880420433320294L;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "ID")
+    @NotBlank
     private Long id;
 
-    @Column(name = "TARGET")
+    @NotBlank
     private String target;
 
-    @Column(name = "CONTENT")
+    @NotBlank
     private String content;
 
-    @Column(name = "CHECKED")
+    @NotBlank
     private Boolean checked;
-
-    public Notification() {
-	super();
-    }
 
     /**
      * @return the id
@@ -93,4 +86,5 @@ public class Notification implements Serializable {
     public void setChecked(Boolean checked) {
 	this.checked = checked;
     }
+
 }
