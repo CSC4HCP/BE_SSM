@@ -1,13 +1,13 @@
 package com.sap.ssm.web.controller;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Transformer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,32 +54,36 @@ public class JoinedController {
 	}
 	
 	/**
-	 * The API to <b>GET</b> a set of joined objects by userId.<br>
+	 * The API for find joined objects by several optional parameters<br>
 	 * <br>
-	 * API URL - <b>"/api/joined/{userId}"</b><br>
+	 * API URL - <b>"/api/joined"</b><br>
 	 * Method - <b>"GET"</b>
 	 * 
 	 * @param userId
-	 *            the user id.
-	 * @return the {@link}Collection of {@link}JoinedDetailResponse object if not null.
+	 *            Optional session userId
+	 * @param session
+	 *            Optional session session id
+	 * @return a collection of joined objects response body
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public Collection<JoinedDetailResponse> findByUserId(@RequestParam("userId") String userId) {
-		return CollectionUtils.collect(joinedService.findByUserId(userId), DETAIL_RESPONSE_TRANSFORMER);
-	}
-	
-	/**
-	 * The API to <b>GET</b> one joined object by session id.<br>
-	 * <br>
-	 * API URL - <b>"/api/joined/{session}"</b><br>
-	 * Method - <b>"GET"</b>
-	 * 
-	 * @param session
-	 *            the session id.
-	 * @return a {@link}JoinedDetailResponse object if not null.
-	 */
-	@RequestMapping(value = "/{session}", method = RequestMethod.GET)
-	public Collection<JoinedDetailResponse> findBySession(@PathVariable("session") Long session) {
-		return CollectionUtils.collect(joinedService.findBySessionId(session), DETAIL_RESPONSE_TRANSFORMER);
+	public Collection<JoinedDetailResponse> findBySeveralConditions(@RequestParam("userId") Optional<String> userId,
+			@RequestParam("session") Optional<Long> session) {
+		if(userId.isPresent()){
+			if(session.isPresent()){
+				return CollectionUtils.collect(joinedService.findByUserIdAndSession(userId.get(),
+						session.get()), DETAIL_RESPONSE_TRANSFORMER);
+			} else {
+				return CollectionUtils.collect(joinedService.findByUserId(userId.get()), 
+						DETAIL_RESPONSE_TRANSFORMER);
+			}
+		} else{
+			if(session.isPresent()){
+				return CollectionUtils.collect(joinedService.findBySession(session.get()), 
+						DETAIL_RESPONSE_TRANSFORMER);
+			} else{
+				return CollectionUtils.collect(joinedService.findAll(), 
+						DETAIL_RESPONSE_TRANSFORMER);
+			}
+		}
 	}
 }

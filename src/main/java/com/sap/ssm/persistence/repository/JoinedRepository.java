@@ -31,7 +31,18 @@ public interface JoinedRepository extends JpaRepository<Joined, Long> {
 	 * 
 	 * @param Session
 	 *            Session id
-	 * @return List<Joined> one join object
+	 * @return List<Joined> a list of join objects
 	 */
 	List<Joined> findBySession(Long Session);
+
+	/**
+	 * Find join objects by userId and session id
+	 * 
+	 * @param userId
+	 *            user id
+	 * @param Session
+	 *            Session id
+	 * @return List<Joined> a list of join objects
+	 */
+	List<Joined> findByUserIdAndSession(String userId, Long session);
 }

@@ -25,6 +25,15 @@ public class JoinedService {
 	private JoinedRepository joinedRepository;
 	
 	/**
+	 * Find all exist joined objects
+	 * 
+	 * @return List the list of all joined objects
+	 */
+	public List<Joined> findAll() {
+		return joinedRepository.findAll();
+	}
+	
+	/**
 	 * Create a joined object
 	 * 
 	 * @param userMergeRequest
@@ -51,12 +60,25 @@ public class JoinedService {
 	/**
 	 * Find join objects by session
 	 * 
-	 * @param userId
-	 *            {@link}Session's session
+	 * @param session
+	 *            {@link}Session's id
 	 * @return a set of {@link}Joined objects
 	 */
-	public List<Joined> findBySessionId(@NotNull Long session) {
+	public List<Joined> findBySession(@NotNull Long session) {
 		return joinedRepository.findBySession(session);
+	}
+	
+	/**
+	 * Find join objects by session
+	 * 
+	 * @param userId
+	 *            {@link}user's id
+	 * @param session
+	 *            {@link}Session's id
+	 * @return a set of {@link}Joined objects
+	 */
+	public List<Joined> findByUserIdAndSession(String userId, Long session) {
+		return joinedRepository.findByUserIdAndSession(userId, session);
 	}
 	
 	/**
@@ -72,5 +94,5 @@ public class JoinedService {
 		joined.setSession(joinedMergeRequest.getSession());
 		joined.setDate(joinedMergeRequest.getDate());
 	}
-	
+
 }
