@@ -13,7 +13,7 @@ import com.sap.ssm.persistence.repository.UserRepository;
 
 import net.minidev.json.JSONObject;
 
-/*
+/**
  * @author Likai Deng
  */
 public class UserControllerTest extends WebTest {
