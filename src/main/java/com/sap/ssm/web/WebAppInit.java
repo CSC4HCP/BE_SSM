@@ -4,6 +4,11 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import com.sap.ssm.SpringConfig;
 
+/**
+ * Dispatcher Servlet Initializer
+ * 
+ * @author I326996 David Lin
+ */
 public class WebAppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override

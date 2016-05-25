@@ -41,7 +41,7 @@ public class UserController {
 	/**
 	 * The API to <b>GET</b> all exist user.<br>
 	 * <br>
-	 * API URL - <b>"/user"</b><br>
+	 * API URL - <b>"/api/user"</b><br>
 	 * Method - <b>"GET"</b>
 	 * 
 	 * @return the {@link}Collection of {@link}UserDetailResponse.
@@ -54,22 +54,26 @@ public class UserController {
 	/**
 	 * The API to <b>GET</b> one user by id.<br>
 	 * <br>
-	 * API URL - <b>"/user/{id}"</b><br>
+	 * API URL - <b>"/api/user/{id}"</b><br>
 	 * Method - <b>"GET"</b>
 	 * 
 	 * @param id
 	 *            the user id.
-	 * @return a {@link}UserDetailResponse object.
+	 * @return a {@link}UserDetailResponse object if not null.
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public UserDetailResponse findOneById(@PathVariable("id") String id) {
-		return new UserDetailResponse(userService.findOneById(id));
+		User user = userService.findOneById(id);
+		if (user == null) {
+			return null;
+		}
+		return new UserDetailResponse(user);
 	}
 
 	/**
 	 * The API to <b>CREATE</b> a new user.<br>
 	 * <br>
-	 * API URL - <b>"/user"</b><br>
+	 * API URL - <b>"/api/user"</b><br>
 	 * Method - <b>"POST"</b>
 	 * 
 	 * @param userMergeRequest
@@ -78,13 +82,15 @@ public class UserController {
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public UserDetailResponse createOne(@NotNull @RequestBody UserMergeRequest userMergeRequest) {
+		userMergeRequest.setRole("Everyone");
+		userMergeRequest.setTeam("SAP SSM");
 		return new UserDetailResponse(userService.createOne(userMergeRequest));
 	}
 
 	/**
 	 * The API to <b>UPDATE</b> a user's data by id.<br>
 	 * <br>
-	 * API URL - <b>"/user/{id}"</b><br>
+	 * API URL - <b>"/api/user/{id}"</b><br>
 	 * Method - <b>"PUT"</b>
 	 * 
 	 * @param id

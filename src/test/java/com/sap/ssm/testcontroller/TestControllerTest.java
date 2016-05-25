@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sap.ssm.controller;
+package com.sap.ssm.testcontroller;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -22,7 +22,7 @@ public class TestControllerTest extends WebTest {
 	@Test
 	public final void testGetString() throws Exception {
 		final String test = "test";
-		this.mvc.perform(MockMvcRequestBuilders.get("/api/test").accept(MediaType.TEXT_PLAIN))
+		this.mvc.perform(MockMvcRequestBuilders.get("/test").accept(MediaType.TEXT_PLAIN))
 				.andDo(MockMvcResultHandlers.print()).andExpect(MockMvcResultMatchers.status().isOk())
 				.andDo(new ResultHandler() {
 

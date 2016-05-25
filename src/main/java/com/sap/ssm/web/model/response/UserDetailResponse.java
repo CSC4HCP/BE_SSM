@@ -20,7 +20,7 @@ public class UserDetailResponse implements Serializable {
 	 */
 	private static final long serialVersionUID = 8336069967946759824L;
 
-	private String id;
+	private String name;
 
 	private String firstName;
 
@@ -46,7 +46,7 @@ public class UserDetailResponse implements Serializable {
 	 *            the {@link}User object returned to client
 	 */
 	public UserDetailResponse(User user) {
-		this.setId(user.getId());
+		this.setName(user.getName());
 		this.setEmail(user.getEmail());
 		this.setFirstName(user.getFirstName());
 		this.setLastName(user.getLastName());
@@ -55,18 +55,18 @@ public class UserDetailResponse implements Serializable {
 	}
 
 	/**
-	 * @return the id
+	 * @return the name
 	 */
-	public String getId() {
-		return id;
+	public String getName() {
+		return name;
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param name
+	 *            the name to set
 	 */
-	public void setId(String id) {
-		this.id = id;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**

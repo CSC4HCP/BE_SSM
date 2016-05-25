@@ -6,6 +6,7 @@
 		<class>com.sap.ssm.persistence.model.Comment</class>
 		<class>com.sap.ssm.persistence.model.Joined</class>
 		<class>com.sap.ssm.persistence.model.Log</class>
+		<class>com.sap.ssm.persistence.model.Notification</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="create-tables"/>
 		</properties>

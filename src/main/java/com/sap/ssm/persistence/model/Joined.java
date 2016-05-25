@@ -1,13 +1,18 @@
 package com.sap.ssm.persistence.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: Joined
- *
+ * 
+ * @author I326996 David Lin
  */
 @Entity
 @Table(name = "T_JOINED")
@@ -30,13 +35,21 @@ public class Joined implements Serializable {
 	private Long session;
 
 	@Column(name = "DATE", nullable = false)
-	private Date date;
+	private Timestamp date;
 
 	/**
 	 * @return the id
 	 */
 	public Long getId() {
 		return id;
+	}
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	/**
@@ -55,7 +68,7 @@ public class Joined implements Serializable {
 	}
 
 	/**
-	 * @return the session
+	 * @return the session id
 	 */
 	public Long getSession() {
 		return session;
@@ -63,7 +76,7 @@ public class Joined implements Serializable {
 
 	/**
 	 * @param session
-	 *            the session to set
+	 *            the session id to set
 	 */
 	public void setSession(Long session) {
 		this.session = session;
@@ -72,7 +85,7 @@ public class Joined implements Serializable {
 	/**
 	 * @return the date
 	 */
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
@@ -80,7 +93,7 @@ public class Joined implements Serializable {
 	 * @param date
 	 *            the date to set
 	 */
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 }

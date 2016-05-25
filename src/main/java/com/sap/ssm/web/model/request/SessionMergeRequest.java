@@ -1,62 +1,55 @@
-package com.sap.ssm.persistence.model;
+package com.sap.ssm.web.model.request;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
- * Entity implementation class for Entity: Session
+ * The SessionMergeRequest is a request object which used to store session data
+ * before the data merged into a {@link}Session object
  * 
- * @author I326996 David Lin
+ * @author David Lin
  */
-@Entity
-@Table(name = "T_SESSION")
-public class Session implements Serializable {
-
+public class SessionMergeRequest implements Serializable {
 	/**
 	 * Generated serial version uid
 	 */
-	private static final long serialVersionUID = 273914554317461374L;
+	private static final long serialVersionUID = -1272715216787472506L;
 
-	@Id
-	@GeneratedValue
-	@Column(name = "ID", nullable = false)
+	@NotBlank
 	private Long id;
 
-	@Column(name = "TOPIC", nullable = false)
+	@NotBlank
 	private String topic;
 
-	@Column(name = "CATEGORY", nullable = false)
+	@NotBlank
 	private String category;
 
-	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@Column(name = "OWNER", nullable = false)
+	@NotBlank
 	private String owner;
 
-	@Column(name = "STATUS", nullable = false)
+	@NotBlank
 	private String status;
 
-	@Column(name = "MEETING_TIME")
+	@NotBlank
 	private Timestamp meetingTime;
 
-	@Column(name = "MEETING_ROOM")
 	private String meetingRoom;
 
-	@Column(name = "FILE")
+	@NotBlank
 	private Integer file;
 
-	@Column(name = "SUMMARY")
 	private String summary;
 
-	@Column(name = "VISIBILITY")
+	@NotBlank
 	private boolean visibility;
+
+	public SessionMergeRequest() {
+
+	}
 
 	/**
 	 * @return the id
@@ -66,10 +59,8 @@ public class Session implements Serializable {
 	}
 
 	/**
-	 * Set Session Id
-	 * 
 	 * @param id
-	 *            session id
+	 *            the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
@@ -210,10 +201,17 @@ public class Session implements Serializable {
 		this.summary = summary;
 	}
 
+	/**
+	 * @return the visibility
+	 */
 	public boolean isVisibility() {
 		return visibility;
 	}
 
+	/**
+	 * @param visibility
+	 *            the visibility to set
+	 */
 	public void setVisibility(boolean visibility) {
 		this.visibility = visibility;
 	}

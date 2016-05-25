@@ -19,15 +19,22 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
+@ContextHierarchy({ @ContextConfiguration(name = "app", classes = Test.AppConfig.class),
+		@ContextConfiguration(name = "web", classes = Test.WebConfig.class) })
 @Transactional
 @Rollback(true)
-@ContextHierarchy(@ContextConfiguration(classes = Test.Config.class))
 public class Test {
 
 	@Configuration
-	@ComponentScan
+	@ComponentScan(basePackages = "com.sap.ssm")
+	public static class AppConfig {
+
+	}
+
+	@Configuration
+	@ComponentScan(basePackages = "com.sap.ssm.web")
 	@EnableWebMvc
-	public static class Config {
+	public static class WebConfig {
 
 	}
 }

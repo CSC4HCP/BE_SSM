@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 /**
  * The {@link}UserService includes operations about the {@link}User object
  * 
- * @author David Lin
+ * @author I326996 David Lin
  */
 @Service
 @Transactional
@@ -104,7 +104,7 @@ public class UserService {
 	 *            the {@link}User object
 	 */
 	private void mergeScalarProperties(UserMergeRequest userMergeRequest, User user) {
-		user.setId(userMergeRequest.getId());
+		user.setName(userMergeRequest.getName());
 		user.setEmail(userMergeRequest.getEmail());
 		user.setFirstName(userMergeRequest.getFirstName());
 		user.setLastName(userMergeRequest.getLastName());

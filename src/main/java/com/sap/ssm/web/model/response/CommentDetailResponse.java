@@ -1,43 +1,50 @@
-package com.sap.ssm.persistence.model;
+package com.sap.ssm.web.model.response;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.*;
+import com.sap.ssm.persistence.model.Comment;
 
-/**
- * Entity implementation class for Entity: Comment
- * 
- * @author I326996 David Lin
- */
-@Entity
-@Table(name = "T_COMMENT")
-public class Comment implements Serializable {
+public class CommentDetailResponse {
 
-	/**
-	 * Generated serial version uid
-	 */
-	private static final long serialVersionUID = 2493665474053947254L;
-
-	@Id
-	@GeneratedValue
-	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "Author", nullable = false)
 	private String author;
 
-	@Column(name = "SESSION", nullable = false)
 	private Long session;
 
-	@Column(name = "CONTENT", nullable = false)
 	private String content;
 
-	@Column(name = "DATE", nullable = false)
 	private Timestamp date;
 
+	public CommentDetailResponse() {
+
+	}
+
+	public CommentDetailResponse(Comment comment) {
+		/**
+		 * set the id
+		 */
+		this.setId(comment.getId());
+		/**
+		 * get the content
+		 */
+		this.setContent(comment.getContent());
+		/**
+		 * get the session
+		 */
+		this.setSession(comment.getSession());
+		/**
+		 * get the date
+		 */
+		this.setDate(comment.getDate());
+		/**
+		 * get the author
+		 */
+		this.setAuthor(comment.getAuthor());
+	}
+
 	/**
-	 * @return the id
+	 * get the id
 	 */
 	public Long getId() {
 		return id;
@@ -52,7 +59,7 @@ public class Comment implements Serializable {
 	}
 
 	/**
-	 * @return the author
+	 * get the author
 	 */
 	public String getAuthor() {
 		return author;
@@ -67,7 +74,7 @@ public class Comment implements Serializable {
 	}
 
 	/**
-	 * @return the session
+	 * get the session
 	 */
 	public Long getSession() {
 		return session;
@@ -82,7 +89,7 @@ public class Comment implements Serializable {
 	}
 
 	/**
-	 * @return the content
+	 * get the content
 	 */
 	public String getContent() {
 		return content;
@@ -97,7 +104,7 @@ public class Comment implements Serializable {
 	}
 
 	/**
-	 * @return the date
+	 * get the date
 	 */
 	public Timestamp getDate() {
 		return date;
