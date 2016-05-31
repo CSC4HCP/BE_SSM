@@ -23,8 +23,6 @@ public class SessionDetailResponse {
 
 	private String meetingRoom;
 
-	private Integer file;
-
 	private String summary;
 
 	private boolean visibility;
@@ -41,7 +39,6 @@ public class SessionDetailResponse {
 		this.setOwner(session.getOwner());
 		this.setStatus(session.getStatus());
 		this.setTopic(session.getTopic());
-		this.setFile(session.getFile());
 		this.setMeetingRoom(session.getMeetingRoom());
 		this.setSummary(session.getSummary());
 		this.setVisibility(session.isVisibility());
@@ -149,18 +146,4 @@ public class SessionDetailResponse {
 		this.visibility = visibility;
 	}
 
-	/**
-	 * @return the file
-	 */
-	public Integer getFile() {
-		return file;
-	}
-
-	/**
-	 * @param file
-	 *            the file to set
-	 */
-	public void setFile(Integer file) {
-		this.file = file;
-	}
 }
