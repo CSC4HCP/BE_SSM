@@ -89,6 +89,20 @@ public class NotificationController {
     }
 
     /**
+     * API to find whether the User of the given target has unchecked
+     * notification API URL - <b>"/api/notify/{target}"</b><br> Method -
+     * <b>"POST"</b>
+     * @param String target
+     * @return Boolean true if there are unchecked notifications false if there
+     *         are not unchecked notifications
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/{target}")
+    public Boolean findWhetherTheTargetHasUncheckedNotification(@PathVariable("target") String target) {
+	Boolean checked = false;
+	return notificationService.findWhetherTheTargetHasUncheckedNotification(checked, target);
+    }
+
+    /**
      * The API for find notifications by several optional parameters<br> <br>
      * API URL - <b>"/api/notify"</b><br> Method - <b>"GET"</b>
      * @param checked Optional notification is checked or not

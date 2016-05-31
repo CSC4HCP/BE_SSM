@@ -126,4 +126,20 @@ public class NotificationService {
 	notification.setContent(notificationMergeRequest.getContent());
 	notification.setChecked(notificationMergeRequest.getChecked());
     }
+
+    /**
+     * Find whether the User of the given target has unchecked notification
+     * @param Boolean checked Always true
+     * @param String target The target's I/C/D number
+     * @return Boolean true if there are unchecked notifications,false if there
+     *         are not unchecked notifications
+     */
+    public Boolean findWhetherTheTargetHasUncheckedNotification(@NotNull Boolean checked, @NotNull String target) {
+	List<Notification> notification = notificationRepository.findByCheckedAndTarget(checked, target);
+	if (notification.isEmpty()) {
+	    return false;
+	} else {
+	    return true;
+	}
+    }
 }
