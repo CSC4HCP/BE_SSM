@@ -49,7 +49,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -61,7 +60,6 @@ public class SessionControllerTest extends WebTest {
 		second.setStatus("test status 2");
 		second.setMeetingRoom("test room 2");
 		second.setMeetingTime(testTime);
-		second.setFile(2);
 		second.setSummary("test summary 2");
 		second.setVisibility(false);
 
@@ -80,7 +78,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].status", Matchers.is("test status 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingRoom", Matchers.is("test room 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].file", Matchers.is(1)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].summary", Matchers.is("test summary 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].visibility", Matchers.is(true)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].id", Matchers.is(2)))
@@ -91,7 +88,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].status", Matchers.is("test status 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].meetingRoom", Matchers.is("test room 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[1].file", Matchers.is(2)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].summary", Matchers.is("test summary 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].visibility", Matchers.is(false))).andReturn();
 
@@ -121,7 +117,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -138,7 +133,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$.status", Matchers.is("test status 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.meetingRoom", Matchers.is("test room 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$.file", Matchers.is(1)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.summary", Matchers.is("test summary 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.visibility", Matchers.is(true))).andReturn();
 
@@ -159,7 +153,7 @@ public class SessionControllerTest extends WebTest {
 
 		String testjson = "{\"id\":\"1\",\"topic\":\"test topic 1\",\"category\":\"test category 1\","
 				+ "\"description\":\"test description 1\",\"owner\":\"test owner 1\",\"status\":\"test status 1\","
-				+ "\"meetingRoom\":\"test room 1\",\"meetingTime\":\"2016-09-10T14:9:13.000Z\",\"file\":1,\"summary\":\"test summary 1\","
+				+ "\"meetingRoom\":\"test room 1\",\"meetingTime\":\"2016-09-10T14:9:13.000Z\",\"summary\":\"test summary 1\","
 				+ "\"visibility\":\"true\"}";
 
 		this.mvc.perform(MockMvcRequestBuilders.post("/session").characterEncoding("UTF-8")
@@ -174,7 +168,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$.status", Matchers.is("test status 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.meetingRoom", Matchers.is("test room 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$.file", Matchers.is(1)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.summary", Matchers.is("test summary 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.visibility", Matchers.is(true))).andReturn();
 
@@ -204,7 +197,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -226,7 +218,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$.status", Matchers.is("test status 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.meetingRoom", Matchers.is("test room 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.meetingTime", Matchers.is("2016-09-10T22:09:23+0800")))
-				.andExpect(MockMvcResultMatchers.jsonPath("$.file", Matchers.is(2)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.summary", Matchers.is("test summary 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.visibility", Matchers.is(true))).andReturn();
 		sessionRepositoryMock.deleteAll();
@@ -259,7 +250,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -276,7 +266,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].status", Matchers.is("test status 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingRoom", Matchers.is("test room 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].file", Matchers.is(1)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].summary", Matchers.is("test summary 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].visibility", Matchers.is(true))).andReturn();
 
@@ -311,7 +300,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -323,7 +311,6 @@ public class SessionControllerTest extends WebTest {
 		second.setStatus("test status 2");
 		second.setMeetingRoom("test room 2");
 		second.setMeetingTime(testTime);
-		second.setFile(2);
 		second.setSummary("test summary 2");
 		second.setVisibility(false);
 
@@ -342,7 +329,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].status", Matchers.is("test status 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingRoom", Matchers.is("test room 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].file", Matchers.is(1)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].summary", Matchers.is("test summary 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].visibility", Matchers.is(true)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].id", Matchers.is(2)))
@@ -353,7 +339,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].status", Matchers.is("test status 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].meetingRoom", Matchers.is("test room 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[1].file", Matchers.is(2)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].summary", Matchers.is("test summary 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].visibility", Matchers.is(false))).andReturn();
 
@@ -388,7 +373,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -400,7 +384,6 @@ public class SessionControllerTest extends WebTest {
 		second.setStatus("test status 1");
 		second.setMeetingRoom("test room 2");
 		second.setMeetingTime(testTime);
-		second.setFile(2);
 		second.setSummary("test summary 2");
 		second.setVisibility(false);
 
@@ -419,7 +402,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].status", Matchers.is("test status 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingRoom", Matchers.is("test room 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].file", Matchers.is(1)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].summary", Matchers.is("test summary 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].visibility", Matchers.is(true)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].id", Matchers.is(2)))
@@ -430,7 +412,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].status", Matchers.is("test status 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].meetingRoom", Matchers.is("test room 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[1].file", Matchers.is(2)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].summary", Matchers.is("test summary 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[1].visibility", Matchers.is(false))).andReturn();
 
@@ -465,7 +446,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -477,7 +457,6 @@ public class SessionControllerTest extends WebTest {
 		second.setStatus("test status 2");
 		second.setMeetingRoom("test room 2");
 		second.setMeetingTime(testTime);
-		second.setFile(2);
 		second.setSummary("test summary 2");
 		second.setVisibility(false);
 
@@ -496,7 +475,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].status", Matchers.is("test status 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingRoom", Matchers.is("test room 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].file", Matchers.is(2)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].summary", Matchers.is("test summary 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].visibility", Matchers.is(false))).andReturn();
 
@@ -532,7 +510,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -544,7 +521,6 @@ public class SessionControllerTest extends WebTest {
 		second.setStatus("test status 2");
 		second.setMeetingRoom("test room 2");
 		second.setMeetingTime(testTime);
-		second.setFile(2);
 		second.setSummary("test summary 2");
 		second.setVisibility(false);
 
@@ -556,7 +532,6 @@ public class SessionControllerTest extends WebTest {
 		third.setStatus("test status 3");
 		third.setMeetingRoom("test room 3");
 		third.setMeetingTime(testTime);
-		third.setFile(3);
 		third.setSummary("test summary 3");
 		third.setVisibility(false);
 
@@ -579,7 +554,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].status", Matchers.is("test status 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingRoom", Matchers.is("test room 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].file", Matchers.is(3)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].summary", Matchers.is("test summary 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].visibility", Matchers.is(false))).andReturn();
 
@@ -615,7 +589,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -627,7 +600,6 @@ public class SessionControllerTest extends WebTest {
 		second.setStatus("test status 2");
 		second.setMeetingRoom("test room 2");
 		second.setMeetingTime(testTime);
-		second.setFile(2);
 		second.setSummary("test summary 2");
 		second.setVisibility(false);
 
@@ -639,7 +611,6 @@ public class SessionControllerTest extends WebTest {
 		third.setStatus("test status 2");
 		third.setMeetingRoom("test room 3");
 		third.setMeetingTime(testTime);
-		third.setFile(3);
 		third.setSummary("test summary 3");
 		third.setVisibility(false);
 
@@ -662,7 +633,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].status", Matchers.is("test status 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingRoom", Matchers.is("test room 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].file", Matchers.is(3)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].summary", Matchers.is("test summary 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].visibility", Matchers.is(false))).andReturn();
 
@@ -698,7 +668,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -710,7 +679,6 @@ public class SessionControllerTest extends WebTest {
 		second.setStatus("test status 2");
 		second.setMeetingRoom("test room 2");
 		second.setMeetingTime(testTime);
-		second.setFile(2);
 		second.setSummary("test summary 2");
 		second.setVisibility(false);
 
@@ -722,7 +690,6 @@ public class SessionControllerTest extends WebTest {
 		third.setStatus("test status 3");
 		third.setMeetingRoom("test room 3");
 		third.setMeetingTime(testTime);
-		third.setFile(3);
 		third.setSummary("test summary 3");
 		third.setVisibility(false);
 
@@ -745,7 +712,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].status", Matchers.is("test status 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingRoom", Matchers.is("test room 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].file", Matchers.is(3)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].summary", Matchers.is("test summary 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].visibility", Matchers.is(false))).andReturn();
 
@@ -781,7 +747,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -793,7 +758,6 @@ public class SessionControllerTest extends WebTest {
 		second.setStatus("test status 2");
 		second.setMeetingRoom("test room 2");
 		second.setMeetingTime(testTime);
-		second.setFile(2);
 		second.setSummary("test summary 2");
 		second.setVisibility(false);
 
@@ -805,7 +769,6 @@ public class SessionControllerTest extends WebTest {
 		third.setStatus("test status 3");
 		third.setMeetingRoom("test room 3");
 		third.setMeetingTime(testTime);
-		third.setFile(3);
 		third.setSummary("test summary 3");
 		third.setVisibility(false);
 
@@ -828,7 +791,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].status", Matchers.is("test status 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingRoom", Matchers.is("test room 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].file", Matchers.is(3)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].summary", Matchers.is("test summary 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].visibility", Matchers.is(false))).andReturn();
 
@@ -864,7 +826,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -876,7 +837,6 @@ public class SessionControllerTest extends WebTest {
 		second.setStatus("test status 2");
 		second.setMeetingRoom("test room 2");
 		second.setMeetingTime(testTime);
-		second.setFile(2);
 		second.setSummary("test summary 2");
 		second.setVisibility(false);
 
@@ -888,7 +848,6 @@ public class SessionControllerTest extends WebTest {
 		third.setStatus("test status 1");
 		third.setMeetingRoom("test room 3");
 		third.setMeetingTime(testTime);
-		third.setFile(3);
 		third.setSummary("test summary 3");
 		third.setVisibility(false);
 
@@ -911,7 +870,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].status", Matchers.is("test status 1")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingRoom", Matchers.is("test room 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].file", Matchers.is(3)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].summary", Matchers.is("test summary 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].visibility", Matchers.is(false))).andReturn();
 
@@ -949,7 +907,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -961,7 +918,6 @@ public class SessionControllerTest extends WebTest {
 		second.setStatus("test status 2");
 		second.setMeetingRoom("test room 2");
 		second.setMeetingTime(testTime);
-		second.setFile(2);
 		second.setSummary("test summary 2");
 		second.setVisibility(false);
 
@@ -973,7 +929,6 @@ public class SessionControllerTest extends WebTest {
 		third.setStatus("test status 3");
 		third.setMeetingRoom("test room 3");
 		third.setMeetingTime(testTime);
-		third.setFile(3);
 		third.setSummary("test summary 3");
 		third.setVisibility(false);
 
@@ -985,7 +940,6 @@ public class SessionControllerTest extends WebTest {
 		forth.setStatus("test status 4");
 		forth.setMeetingRoom("test room 4");
 		forth.setMeetingTime(testTime);
-		forth.setFile(4);
 		forth.setSummary("test summary 4");
 		forth.setVisibility(true);
 
@@ -1010,7 +964,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].status", Matchers.is("test status 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingRoom", Matchers.is("test room 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].file", Matchers.is(3)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].summary", Matchers.is("test summary 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].visibility", Matchers.is(false))).andReturn();
 
@@ -1048,7 +1001,6 @@ public class SessionControllerTest extends WebTest {
 		first.setStatus("test status 1");
 		first.setMeetingRoom("test room 1");
 		first.setMeetingTime(testTime);
-		first.setFile(1);
 		first.setSummary("test summary 1");
 		first.setVisibility(true);
 
@@ -1060,7 +1012,6 @@ public class SessionControllerTest extends WebTest {
 		second.setStatus("test status 2");
 		second.setMeetingRoom("test room 2");
 		second.setMeetingTime(testTime);
-		second.setFile(2);
 		second.setSummary("test summary 2");
 		second.setVisibility(false);
 
@@ -1072,7 +1023,6 @@ public class SessionControllerTest extends WebTest {
 		third.setStatus("test status 4");
 		third.setMeetingRoom("test room 3");
 		third.setMeetingTime(testTime);
-		third.setFile(3);
 		third.setSummary("test summary 3");
 		third.setVisibility(false);
 
@@ -1084,7 +1034,6 @@ public class SessionControllerTest extends WebTest {
 		forth.setStatus("test status 4");
 		forth.setMeetingRoom("test room 4");
 		forth.setMeetingTime(testTime);
-		forth.setFile(4);
 		forth.setSummary("test summary 4");
 		forth.setVisibility(true);
 
@@ -1109,7 +1058,6 @@ public class SessionControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].status", Matchers.is("test status 4")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingRoom", Matchers.is("test room 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].meetingTime", Matchers.is(testTimeString)))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].file", Matchers.is(3)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].summary", Matchers.is("test summary 3")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].visibility", Matchers.is(false))).andReturn();
 

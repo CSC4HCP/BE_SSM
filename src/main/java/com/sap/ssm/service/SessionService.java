@@ -242,7 +242,6 @@ public class SessionService {
 		session.setMeetingRoom(sessionMergeRequest.getMeetingRoom());
 		session.setMeetingTime(sessionMergeRequest.getMeetingTime());
 		session.setSummary(sessionMergeRequest.getSummary());
-		session.setFile(sessionMergeRequest.getFile());
 		session.setVisibility(sessionMergeRequest.isVisibility());
 	}
 }
