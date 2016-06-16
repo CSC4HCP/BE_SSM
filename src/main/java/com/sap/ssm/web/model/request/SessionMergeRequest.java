@@ -39,9 +39,6 @@ public class SessionMergeRequest implements Serializable {
 
 	private String meetingRoom;
 
-	@NotBlank
-	private Integer file;
-
 	private String summary;
 
 	@NotBlank
@@ -169,21 +166,6 @@ public class SessionMergeRequest implements Serializable {
 	 */
 	public void setMeetingRoom(String meetingRoom) {
 		this.meetingRoom = meetingRoom;
-	}
-
-	/**
-	 * @return the file
-	 */
-	public Integer getFile() {
-		return file;
-	}
-
-	/**
-	 * @param file
-	 *            the file to set
-	 */
-	public void setFile(Integer file) {
-		this.file = file;
 	}
 
 	/**

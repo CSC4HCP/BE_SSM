@@ -24,90 +24,128 @@ import com.sap.ssm.web.model.response.NotificationDetailResponse;
 
 /**
  * The {@link}RestController for notification entity.
+ * 
  * @author Likai Deng
  */
 
 @RestController
 @RequestMapping("/notify")
 public class NotificationController {
-    @Autowired
-    private NotificationService notificationService;
-    private Transformer<Notification, NotificationDetailResponse> DETAIL_RESPONSE_TRANSFORMER = new Transformer<Notification, NotificationDetailResponse>() {
+	@Autowired
+	private NotificationService notificationService;
+	private Transformer<Notification, NotificationDetailResponse> DETAIL_RESPONSE_TRANSFORMER = new Transformer<Notification, NotificationDetailResponse>() {
 
-	@Override
-	public NotificationDetailResponse transform(Notification input) {
-	    return new NotificationDetailResponse(input);
+		@Override
+		public NotificationDetailResponse transform(Notification input) {
+			return new NotificationDetailResponse(input);
+		}
+	};
+
+	/**
+	 * The API to <b>POST</b> create a new notification.<br>
+	 * <br>
+	 * API URL - <b>"/api/notify"</b><br>
+	 * Method - <b>"POST"</b>
+	 * 
+	 * @return the {@link}Collection of {@link}NotificationDetailResponse.
+	 */
+	@RequestMapping(method = RequestMethod.POST)
+	public NotificationDetailResponse createOne(
+			@NotNull @RequestBody NotificationMergeRequest notificationMergeRequest) {
+		return new NotificationDetailResponse(notificationService.createOne(notificationMergeRequest));
 	}
-    };
 
-    /**
-     * The API to <b>POST</b> create a new notification.<br> <br> API URL -
-     * <b>"/api/notify"</b><br> Method - <b>"POST"</b>
-     * @return the {@link}Collection of {@link}NotificationDetailResponse.
-     */
-    @RequestMapping(method = RequestMethod.POST)
-    public NotificationDetailResponse createOne(
-	    @NotNull @RequestBody NotificationMergeRequest notificationMergeRequest) {
-	return new NotificationDetailResponse(notificationService.createOne(notificationMergeRequest));
-    }
-
-    /**
-     * The API for delete a notification<br> <br> API URL -
-     * <b>"/api/notify/{id}"</b> <br> Method - <b>"DELETE"</b>
-     * @param id notification id
-     */
-    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-    public String deleteOneById(@PathVariable("id") Long id) {
-	return notificationService.deleteOneById(id);
-    }
-
-    /**
-     * The API for delete notifications in batch<br> <br> API URL -
-     * <b>"/api/notify"</b> <br> Method - <b>"DELETE"</b>
-     * @param notificationIdList A list of ids for notifications to delete
-     */
-    @RequestMapping(method = RequestMethod.DELETE)
-    public String deleteInBatch(@NotNull @RequestBody List<Long> notificationIdList) {
-	List<Notification> notificationList = new ArrayList<Notification>();
-	for (Long notificationId : notificationIdList) {
-	    notificationList.add(notificationService.findOneById(notificationId));
+	/**
+	 * The API for delete a notification<br>
+	 * <br>
+	 * API URL - <b>"/api/notify/{id}"</b> <br>
+	 * Method - <b>"DELETE"</b>
+	 * 
+	 * @param id
+	 *            notification id
+	 */
+	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+	public String deleteOneById(@PathVariable("id") Long id) {
+		return notificationService.deleteOneById(id);
 	}
-	return notificationService.deleteInBatch(notificationList);
-    }
 
-    /**
-     * The API for update a notification<br> <br> API URL -
-     * <b>"/api/notify/{id}"</b><br> Method - <b>"PUT"</b>
-     * @param id notification id
-     * @param notificationMergeRequest request body for notification
-     * @return the response body for a notification
-     */
-    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-    public NotificationDetailResponse updateOne(@PathVariable("id") Long id,
-	    @NotNull @RequestBody NotificationMergeRequest notificationMergeRequest) {
-	return new NotificationDetailResponse(notificationService.updateOne(id, notificationMergeRequest));
-    }
-
-    /**
-     * The API for find notifications by several optional parameters<br> <br>
-     * API URL - <b>"/api/notify"</b><br> Method - <b>"GET"</b>
-     * @param checked Optional notification is checked or not
-     * @param target Optional notification's target
-     * @return a collection of notifications
-     */
-    @RequestMapping(method = RequestMethod.GET)
-    public Collection<NotificationDetailResponse> findBySeveralConditions(
-	    @RequestParam("checked") Optional<Boolean> checked, @RequestParam("target") Optional<String> target) {
-	if (checked.isPresent() && target.isPresent()) {
-	    return CollectionUtils.collect(notificationService.findByCheckedAndTarget(checked.get(), target.get()),
-		    DETAIL_RESPONSE_TRANSFORMER);
-	} else if (checked.isPresent()) {
-	    return CollectionUtils.collect(notificationService.findByChecked(checked.get()),
-		    DETAIL_RESPONSE_TRANSFORMER);
-	} else if (target.isPresent()) {
-	    return CollectionUtils.collect(notificationService.findByTarget(target.get()), DETAIL_RESPONSE_TRANSFORMER);
-	} else {
-	    return CollectionUtils.collect(notificationService.findAll(), DETAIL_RESPONSE_TRANSFORMER);
+	/**
+	 * The API for delete notifications in batch<br>
+	 * <br>
+	 * API URL - <b>"/api/notify"</b> <br>
+	 * Method - <b>"DELETE"</b>
+	 * 
+	 * @param notificationIdList
+	 *            A list of ids for notifications to delete
+	 */
+	@RequestMapping(method = RequestMethod.DELETE)
+	public String deleteInBatch(@NotNull @RequestBody List<Long> notificationIdList) {
+		List<Notification> notificationList = new ArrayList<Notification>();
+		for (Long notificationId : notificationIdList) {
+			notificationList.add(notificationService.findOneById(notificationId));
+		}
+		return notificationService.deleteInBatch(notificationList);
 	}
-    }
+
+	/**
+	 * The API for update a notification<br>
+	 * <br>
+	 * API URL - <b>"/api/notify/{id}"</b><br>
+	 * Method - <b>"PUT"</b>
+	 * 
+	 * @param id
+	 *            notification id
+	 * @param notificationMergeRequest
+	 *            request body for notification
+	 * @return the response body for a notification
+	 */
+	@RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+	public NotificationDetailResponse updateOne(@PathVariable("id") Long id,
+			@NotNull @RequestBody NotificationMergeRequest notificationMergeRequest) {
+		return new NotificationDetailResponse(notificationService.updateOne(id, notificationMergeRequest));
+	}
+
+	/**
+	 * API to find whether the User of the given target has unchecked
+	 * notification API URL - <b>"/api/notify/{target}"</b><br>
+	 * Method - <b>"POST"</b>
+	 * 
+	 * @param String
+	 *            target
+	 * @return Boolean true if there are unchecked notifications false if there
+	 *         are not unchecked notifications
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = "/{target}")
+	public Boolean findWhetherTheTargetHasUncheckedNotification(@PathVariable("target") String target) {
+		Boolean checked = false;
+		return notificationService.findWhetherTheTargetHasUncheckedNotification(checked, target);
+	}
+
+	/**
+	 * The API for find notifications by several optional parameters<br>
+	 * <br>
+	 * API URL - <b>"/api/notify"</b><br>
+	 * Method - <b>"GET"</b>
+	 * 
+	 * @param checked
+	 *            Optional notification is checked or not
+	 * @param target
+	 *            Optional notification's target
+	 * @return a collection of notifications
+	 */
+	@RequestMapping(method = RequestMethod.GET)
+	public Collection<NotificationDetailResponse> findBySeveralConditions(
+			@RequestParam("checked") Optional<Boolean> checked, @RequestParam("target") Optional<String> target) {
+		if (checked.isPresent() && target.isPresent()) {
+			return CollectionUtils.collect(notificationService.findByCheckedAndTarget(checked.get(), target.get()),
+					DETAIL_RESPONSE_TRANSFORMER);
+		} else if (checked.isPresent()) {
+			return CollectionUtils.collect(notificationService.findByChecked(checked.get()),
+					DETAIL_RESPONSE_TRANSFORMER);
+		} else if (target.isPresent()) {
+			return CollectionUtils.collect(notificationService.findByTarget(target.get()), DETAIL_RESPONSE_TRANSFORMER);
+		} else {
+			return CollectionUtils.collect(notificationService.findAll(), DETAIL_RESPONSE_TRANSFORMER);
+		}
+	}
 }

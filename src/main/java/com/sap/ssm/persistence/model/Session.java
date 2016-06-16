@@ -49,9 +49,6 @@ public class Session implements Serializable {
 	@Column(name = "MEETING_ROOM")
 	private String meetingRoom;
 
-	@Column(name = "FILE")
-	private Integer file;
-
 	@Column(name = "SUMMARY")
 	private String summary;
 
@@ -178,21 +175,6 @@ public class Session implements Serializable {
 	 */
 	public void setMeetingRoom(String meetingRoom) {
 		this.meetingRoom = meetingRoom;
-	}
-
-	/**
-	 * @return the file
-	 */
-	public Integer getFile() {
-		return file;
-	}
-
-	/**
-	 * @param file
-	 *            the file to set
-	 */
-	public void setFile(Integer file) {
-		this.file = file;
 	}
 
 	/**

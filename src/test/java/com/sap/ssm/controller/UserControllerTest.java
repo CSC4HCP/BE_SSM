@@ -126,6 +126,8 @@ public class UserControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$.team", Matchers.is("SAP SSM")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.role", Matchers.is("Everyone")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 1"))).andReturn();
+
+		userRepositoryMock.deleteAll();
 	}
 
 	/**
@@ -160,6 +162,8 @@ public class UserControllerTest extends WebTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$.team", Matchers.is("test team 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.role", Matchers.is("test role 2")))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.email", Matchers.is("test email 2"))).andReturn();
+
+		userRepositoryMock.deleteAll();
 	}
 
 	/**
