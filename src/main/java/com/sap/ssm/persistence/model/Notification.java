@@ -15,82 +15,86 @@ import javax.persistence.Table;
 @Table(name = "T_NOTIFICATION")
 public class Notification implements Serializable {
 
-    /**
-     * Generated serial version uid
-     */
-    private static final long serialVersionUID = -3144963661473363024L;
+	/**
+	 * Generated serial version uid
+	 */
+	private static final long serialVersionUID = -3144963661473363024L;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "ID")
-    private Long id;
+	@Id
+	@GeneratedValue
+	@Column(name = "ID")
+	private Long id;
 
-    @Column(name = "TARGET")
-    private String target;
+	@Column(name = "TARGET")
+	private String target;
 
-    @Column(name = "CONTENT")
-    private String content;
+	@Column(name = "CONTENT")
+	private String content;
 
-    @Column(name = "CHECKED")
-    private Boolean checked;
+	@Column(name = "CHECKED")
+	private Boolean checked;
 
-    public Notification() {
-	super();
-    }
+	public Notification() {
+		super();
+	}
 
-    /**
-     * @return the id
-     */
-    public Long getId() {
-	return id;
-    }
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-	this.id = id;
-    }
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    /**
-     * @return the target
-     */
-    public String getTarget() {
-	return target;
-    }
+	/**
+	 * @return the target
+	 */
+	public String getTarget() {
+		return target;
+	}
 
-    /**
-     * @param target the target to set
-     */
-    public void setTarget(String target) {
-	this.target = target;
-    }
+	/**
+	 * @param target
+	 *            the target to set
+	 */
+	public void setTarget(String target) {
+		this.target = target;
+	}
 
-    /**
-     * @return the content
-     */
-    public String getContent() {
-	return content;
-    }
+	/**
+	 * @return the content
+	 */
+	public String getContent() {
+		return content;
+	}
 
-    /**
-     * @param content the content to set
-     */
-    public void setContent(String content) {
-	this.content = content;
-    }
+	/**
+	 * @param content
+	 *            the content to set
+	 */
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-    /**
-     * @return the checked
-     */
-    public Boolean getChecked() {
-	return checked;
-    }
+	/**
+	 * @return the checked
+	 */
+	public Boolean getChecked() {
+		return checked;
+	}
 
-    /**
-     * @param checked the checked to set
-     */
-    public void setChecked(Boolean checked) {
-	this.checked = checked;
-    }
+	/**
+	 * @param checked
+	 *            the checked to set
+	 */
+	public void setChecked(Boolean checked) {
+		this.checked = checked;
+	}
 }
