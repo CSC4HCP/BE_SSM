@@ -134,5 +134,6 @@ public class CommentService {
 		comment.setSession(commentMergeRequest.getSession());
 		comment.setContent(commentMergeRequest.getContent());
 		comment.setAuthor(commentMergeRequest.getAuthor());
+		comment.setSessionTopic(commentMergeRequest.getSessionTopic());
 	}
 }

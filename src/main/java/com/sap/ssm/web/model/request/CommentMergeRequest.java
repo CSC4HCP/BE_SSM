@@ -27,6 +27,9 @@ public class CommentMergeRequest implements Serializable {
 	private Long session;
 
 	@NotBlank
+	private String sessionTopic;
+
+	@NotBlank
 	private String content;
 
 	@NotBlank
@@ -114,6 +117,21 @@ public class CommentMergeRequest implements Serializable {
 	 */
 	public void setDate(Timestamp date) {
 		this.date = date;
+	}
+
+	/**
+	 * @return the sessionTopic
+	 */
+	public String getSessionTopic() {
+		return sessionTopic;
+	}
+
+	/**
+	 * @param sessionTopic
+	 *            the sessionTopic to set
+	 */
+	public void setSessionTopic(String sessionTopic) {
+		this.sessionTopic = sessionTopic;
 	}
 
 }

@@ -30,7 +30,10 @@ public class Comment implements Serializable {
 	@Column(name = "SESSION", nullable = false)
 	private Long session;
 
-	@Column(name = "CONTENT", nullable = false)
+	@Column(name = "SESSION_TOPIC", nullable = false)
+	private String sessionTopic;
+
+	@Column(name = "CONTENT", nullable = false, length = 10240)
 	private String content;
 
 	@Column(name = "DATE", nullable = false)
@@ -109,5 +112,20 @@ public class Comment implements Serializable {
 	 */
 	public void setDate(Timestamp date) {
 		this.date = date;
+	}
+
+	/**
+	 * @return the sessionTopic
+	 */
+	public String getSessionTopic() {
+		return sessionTopic;
+	}
+
+	/**
+	 * @param sessionTopic
+	 *            the sessionTopic to set
+	 */
+	public void setSessionTopic(String sessionTopic) {
+		this.sessionTopic = sessionTopic;
 	}
 }
