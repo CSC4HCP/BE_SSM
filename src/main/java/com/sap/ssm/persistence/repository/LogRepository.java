@@ -14,12 +14,12 @@ import com.sap.ssm.persistence.model.Log;
 @Transactional
 public interface LogRepository extends JpaRepository<Log, Long> {
 
-    List<Log> findByUserId(String userId);
+	List<Log> findByUserId(String userId);
 
-    List<Log> findAll(Specification<Log> sevenDaysAgo);
+	List<Log> findAll(Specification<Log> sevenDaysAgo);
 
-    List<Log> findByDateBetween(Timestamp date1, Timestamp date2);
+	List<Log> findByDateBetween(Timestamp date1, Timestamp date2);
 
-    List<Log> findByDateBefore(Timestamp date1);
+	List<Log> findByDateBefore(Timestamp date1);
 
 }
