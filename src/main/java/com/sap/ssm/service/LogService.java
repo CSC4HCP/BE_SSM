@@ -106,5 +106,4 @@ public class LogService {
     public List<Log> findByDateBetween(Timestamp date1, Timestamp date2) {
 	return logRepository.findByDateBetween(date1, date2);
     }
-
 }

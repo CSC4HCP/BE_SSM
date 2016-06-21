@@ -85,6 +85,7 @@ public class LogController {
 
 	} else {
 	    return CollectionUtils.collect(logService.findAll(), DETAIL_RESPONSE_TRANSFORMER);
+
 	}
     }
 }
