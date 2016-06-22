@@ -6,79 +6,83 @@ import com.sap.ssm.persistence.model.Notification;
 
 public class NotificationDetailResponse implements Serializable {
 
-    /**
-     * Generated serial version id
-     */
-    private static final long serialVersionUID = -5945317077332386084L;
+	/**
+	 * Generated serial version id
+	 */
+	private static final long serialVersionUID = -5945317077332386084L;
 
-    private Long id;
+	private Long id;
 
-    private String target;
+	private String target;
 
-    private String content;
+	private String content;
 
-    private Boolean checked;
+	private Boolean checked;
 
-    public NotificationDetailResponse(Notification notification) {
-	this.setId(notification.getId());
-	this.setContent(notification.getContent());
-	this.setChecked(notification.getChecked());
-	this.setTarget(notification.getTarget());
-    }
+	public NotificationDetailResponse(Notification notification) {
+		this.setId(notification.getId());
+		this.setContent(notification.getContent());
+		this.setChecked(notification.getChecked());
+		this.setTarget(notification.getTarget());
+	}
 
-    /**
-     * @return the id
-     */
-    public Long getId() {
-	return id;
-    }
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-	this.id = id;
-    }
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    /**
-     * @return the target
-     */
-    public String getTarget() {
-	return target;
-    }
+	/**
+	 * @return the target
+	 */
+	public String getTarget() {
+		return target;
+	}
 
-    /**
-     * @param target the target to set
-     */
-    public void setTarget(String target) {
-	this.target = target;
-    }
+	/**
+	 * @param target
+	 *            the target to set
+	 */
+	public void setTarget(String target) {
+		this.target = target;
+	}
 
-    /**
-     * @return the content
-     */
-    public String getContent() {
-	return content;
-    }
+	/**
+	 * @return the content
+	 */
+	public String getContent() {
+		return content;
+	}
 
-    /**
-     * @param content the content to set
-     */
-    public void setContent(String content) {
-	this.content = content;
-    }
+	/**
+	 * @param content
+	 *            the content to set
+	 */
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-    /**
-     * @return the checked
-     */
-    public Boolean getChecked() {
-	return checked;
-    }
+	/**
+	 * @return the checked
+	 */
+	public Boolean getChecked() {
+		return checked;
+	}
 
-    /**
-     * @param checked the checked to set
-     */
-    public void setChecked(Boolean checked) {
-	this.checked = checked;
-    }
+	/**
+	 * @param checked
+	 *            the checked to set
+	 */
+	public void setChecked(Boolean checked) {
+		this.checked = checked;
+	}
 }
