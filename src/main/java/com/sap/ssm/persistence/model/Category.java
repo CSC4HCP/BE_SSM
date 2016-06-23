@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @author I326958 Yuan Zhang
  */
 @Entity
-@Table(name = "T_Category")
+@Table(name = "T_CATEGORY")
 public class Category implements Serializable {
 
 	/**
