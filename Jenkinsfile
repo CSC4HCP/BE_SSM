@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        bat 'mvn clean package'
+        tool 'Maven 3.3.9'
       }
     }
   }
