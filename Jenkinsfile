@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        tool 'Maven 3.3.9'
+        bat(script: 'PATH', returnStatus: true, returnStdout: true)
       }
     }
   }
